@@ -1,0 +1,249 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{A91B7BEE-5FF5-4268-8BF7-51012EC4F0BC}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>SubwayKiosk</RootNamespace>
+    <AssemblyName>SubwayKiosk</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Control\OrderMenuControl.xaml.cs">
+      <DependentUpon>OrderMenuControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\OrderMenuItemControl.xaml.cs">
+      <DependentUpon>OrderMenuItemControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\TableControl.xaml.cs">
+      <DependentUpon>TableControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Menu.cs" />
+    <Compile Include="Model\MenuData.cs" />
+    <Compile Include="Model\SubwayTable.cs" />
+    <Page Include="Control\OrderMenuControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Control\OrderMenuItemControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Control\TableControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainSubKi.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainSubKi.xaml.cs">
+      <DependentUpon>MainSubKi.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Assets\SUBWAY_Side\subway_001.jpg" />
+    <Resource Include="Assets\SUBWAY_Side\subway_002.jpg" />
+    <Resource Include="Assets\SUBWAY_Side\subway_003.jpg" />
+    <Resource Include="Assets\SUBWAY_Side\subway_004.jpg" />
+    <Resource Include="Assets\SUBWAY_Side\subway_005.jpg" />
+    <Resource Include="Assets\SUBWAY_Side\subway_006.jpg" />
+    <Resource Include="Assets\SUBWAY_Side\subway_007.jpg" />
+    <Resource Include="Assets\SUBWAY_Side\subway_008.jpg" />
+    <Resource Include="Assets\SUBWAY_Side\subway_009.jpg" />
+    <Resource Include="Assets\SUBWAY_Side\subway_010.jpg" />
+    <Resource Include="Assets\SUBWAY_Side\subway_011.jpg" />
+    <Resource Include="Assets\SUBWAY_Side\subway_012.jpg" />
+    <Resource Include="Assets\SUBWAY_Side\subway_013.jpg" />
+    <Content Include="Assets\SUBWAY_Sand\subway_002.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\SUBWAY_Sand\subway_003.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\SUBWAY_Sand\subway_004.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\SUBWAY_Sand\subway_005.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\SUBWAY_Sand\subway_006.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\SUBWAY_Sand\subway_007.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\SUBWAY_Sand\subway_008.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\SUBWAY_Sand\subway_009.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\SUBWAY_Sand\subway_010.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\SUBWAY_Sand\subway_011.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\SUBWAY_Sand\subway_012.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\SUBWAY_Sand\subway_013.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\SUBWAY_Sand\subway_014.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\SUBWAY_Sand\subway_015.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\SUBWAY_Sand\subway_016.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\SUBWAY_Sand\subway_017.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\SUBWAY_Sand\subway_018.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\SUBWAY_Sand\subway_019.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\SUBWAY_Sand\subway_020.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\SUBWAY_Sand\subway_021.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\SUBWAY_Sand\subway_022.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\SUBWAY_Sand\subway_023.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\SUBWAY_Sand\subway_024.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\SUBWAY_Sand\subway_025.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\SUBWAY_Sand\subway_026.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\SUBWAY_Sand\subway_027.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\SUBWAY_Sand\subway_029.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Resource Include="Assets\SUBWAY_Sal\subway_001.jpg" />
+    <Resource Include="Assets\SUBWAY_Sal\subway_002.jpg" />
+    <Resource Include="Assets\SUBWAY_Sal\subway_003.jpg" />
+    <Resource Include="Assets\SUBWAY_Sal\subway_004.jpg" />
+    <Resource Include="Assets\SUBWAY_Sal\subway_005.jpg" />
+    <Resource Include="Assets\SUBWAY_Sal\subway_006.jpg" />
+    <Resource Include="Assets\SUBWAY_Sal\subway_007.jpg" />
+    <Resource Include="Assets\SUBWAY_Sal\subway_008.jpg" />
+    <Resource Include="Assets\SUBWAY_Sal\subway_009.jpg" />
+    <Resource Include="Assets\SUBWAY_Sal\subway_010.jpg" />
+    <Resource Include="Assets\SUBWAY_Sal\subway_011.jpg" />
+    <Resource Include="Assets\SUBWAY_Sal\subway_012.jpg" />
+    <Resource Include="Assets\SUBWAY_Sal\subway_013.jpg" />
+    <Resource Include="Assets\SUBWAY_Sal\subway_014.jpg" />
+    <Resource Include="Assets\SUBWAY_Sal\subway_015.jpg" />
+    <Resource Include="Assets\SUBWAY_Sal\subway_016.jpg" />
+    <Resource Include="Assets\SUBWAY_Sal\subway_017.jpg" />
+    <Resource Include="Assets\SUBWAY_Sal\subway_018.jpg" />
+    <Resource Include="Assets\SUBWAY_Sal\subway_019.jpg" />
+    <Resource Include="Assets\SUBWAY_Sal\subway_020.jpg" />
+    <Resource Include="Assets\SUBWAY_Sal\subway_021.jpg" />
+    <Resource Include="Assets\SUBWAY_toping\subway_001.jpg" />
+    <Resource Include="Assets\SUBWAY_toping\subway_002.jpg" />
+    <Resource Include="Assets\SUBWAY_toping\subway_003.jpg" />
+    <Resource Include="Assets\SUBWAY_toping\subway_004.jpg" />
+    <Resource Include="Assets\SUBWAY_toping\subway_005.jpg" />
+    <Resource Include="Assets\SUBWAY_toping\subway_006.jpg" />
+    <Resource Include="Assets\SUBWAY_toping\subway_007.jpg" />
+    <Resource Include="Assets\SUBWAY_toping\subway_008.jpg" />
+    <Resource Include="Assets\SUBWAY_toping\subway_009.jpg" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
