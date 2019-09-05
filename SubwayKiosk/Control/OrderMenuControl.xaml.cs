@@ -36,42 +36,12 @@ namespace SubwayKiosk.Control
         {
             foreach(Model.Menu menu in App.menuData.lstMenu)
             {
-                //string imgpath = @"\Assets\SUBWAY_Sand\subway_002.jpg";
-                //Uri imageuri = new Uri(imgpath, UriKind.RelativeOrAbsolute);
-                //BitmapImage imagebitmap = new BitmapImage(imageuri);
-                //Image img = new Image();
-                //img.Source = imagebitmap;
-
                 OrderMenuItemControl itemControl = new OrderMenuItemControl();
                 Uri imageuri = new Uri(menu.ImagePath, UriKind.RelativeOrAbsolute);
                 BitmapImage imagebitmap = new BitmapImage(imageuri);
                 itemControl.img.Source = imagebitmap;
-
-                //for(int i = 0; i<8; i++)
-                //{
-                //    string path = "subway_"+
-                //    lstOrder.Items.Add()
-                //}
-
                 lstOrder.Items.Add(itemControl);
             }
-
-            //string imgpath = @"\Assets\SUBWAY_Sand\subway_002.jpg";
-            //Uri imageuri = new Uri(imgpath, UriKind.RelativeOrAbsolute);
-            //BitmapImage imagebitmap = new BitmapImage(imageuri);
-            ////Image img = new Image();
-            ////img.Source = imagebitmap;
-
-            //OrderMenuItemControl itemControl = new OrderMenuItemControl();
-            //itemControl.img.Source = imagebitmap;
-
-            ////for(int i = 0; i<8; i++)
-            ////{
-            ////    string path = "subway_"+
-            ////    lstOrder.Items.Add()
-            ////}
-
-            //lstOrder.Items.Add(itemControl);
         }
     }
 }

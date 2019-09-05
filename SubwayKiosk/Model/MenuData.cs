@@ -25,8 +25,8 @@ namespace SubwayKiosk.Model
                 
             lstMenu = new List<Menu>()
             {
-                new Menu(){ Name = "쉬림프버거", ImagePath = @"\Assets\SUBWAY_Sand\subway_002.jpg"},
-                new Menu(){ Name = "시끄러버거", ImagePath = @"\Assets\SUBWAY_Sand\subway_003.jpg"},
+                new Menu(){ KrName = "쉬림프", EnName = "Shrimp", ImagePath = @"\Assets\SUBWAY_Sand\subway_001.jpg"},
+                new Menu(){ KrName = "쉬림프 아보카도", EnName = "Shrimp Avocado", ImagePath = @"\Assets\SUBWAY_Sand\subway_002.jpg"},
             };
 
         }

@@ -55,6 +55,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Common\Category.cs" />
     <Compile Include="Control\OrderMenuControl.xaml.cs">
       <DependentUpon>OrderMenuControl.xaml</DependentUpon>
     </Compile>
