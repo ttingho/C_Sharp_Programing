@@ -28,9 +28,6 @@ namespace SubwayKiosk.Model
                 new Menu(){ KrName = "쉬림프", EnName = "Shrimp", ImagePath = @"\Assets\SUBWAY_Sand\subway_001.jpg"},
                 new Menu(){ KrName = "쉬림프 아보카도", EnName = "Shrimp Avocado", ImagePath = @"\Assets\SUBWAY_Sand\subway_002.jpg"},
             };
-
         }
-
-
     }
 }
