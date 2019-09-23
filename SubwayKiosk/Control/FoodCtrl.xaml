@@ -1,0 +1,25 @@
+﻿<UserControl x:Class="SubwayKiosk.FoodCtrl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SubwayKiosk"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <Style x:Key="TitleStyle" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="24" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="Margin" Value="15 0 0 0" />
+        </Style>    
+    </UserControl.Resources>
+
+    <Grid Width="500" Height="300" Margin="50">
+        <Image x:Name="FoodImage" Stretch="UniformToFill"></Image>
+        <StackPanel Orientation="Horizontal">
+            <TextBlock x:Name="tbName" Style="{StaticResource TitleStyle}" HorizontalAlignment="Center"></TextBlock>
+            <TextBlock x:Name="tbCount" Style="{StaticResource TitleStyle}" HorizontalAlignment="Center"></TextBlock>
+            <TextBlock x:Name="tbPrice" Style="{StaticResource TitleStyle}" HorizontalAlignment="Center"></TextBlock>
+        </StackPanel>
+    </Grid>
+</UserControl>
