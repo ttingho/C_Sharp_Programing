@@ -14,7 +14,7 @@ namespace SubwayKiosk
     /// </summary>
     public partial class App : Application
     {
-        public static MenuData menuData = new MenuData();
-
+        public static FoodData foodData = new FoodData();
+        public static TableData tableData = new TableData();
     }
 }

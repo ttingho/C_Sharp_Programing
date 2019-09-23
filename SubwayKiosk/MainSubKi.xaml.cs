@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using SubKiLibrary;
+
 
 namespace SubwayKiosk
 {
@@ -28,7 +31,15 @@ namespace SubwayKiosk
 
         private void MainSubKi_Loaded(object sender, RoutedEventArgs e)
         {
-            App.menuData.Load();
+            Debug.WriteLine("MainSubki_Loaded");
+            App.foodData.Load();
+            App.tableData.Load();
+#if true
+            //lvMain.ItemsSource = App.foodData.lstMenu;
+            lvTable.ItemsSource = App.tableData.SubkiTables;
+#else
+            LoadMenu();
+#endif
         }
     }
 }

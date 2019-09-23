@@ -3,11 +3,153 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:control="clr-namespace:SubwayKiosk.Control"
         xmlns:local="clr-namespace:SubwayKiosk"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <control:OrderMenuControl/>
+        Title="SubWay">
+    <Window.Resources>
+        <Style x:Key="TableText" TargetType="TextBlock">
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="FontFamily" Value="TMONMONSORI" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="FontSize" Value="35" />
+            <Setter Property="Foreground" Value="#878585" />
+        </Style>
+        <Style x:Key="Button" TargetType="Button">
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="FontSize" Value="30" />
+            <Setter Property="FontFamily" Value="TMONMONSORI" />
+        </Style>
+        <Style x:Key="StatisticTitle" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="30" />
+            <Setter Property="FontFamily" Value="TMONMONSORI" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+        </Style>
+        <Style x:Key="lvTableStyle" TargetType="ListView">
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BorderThickness" Value="0" />
+        </Style>
+    </Window.Resources>
+    <Grid Background="#F5F5F5">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.1*" />
+            <RowDefinition Height="9.8*" />
+            <RowDefinition Height="0.1*" />
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Background="#009841"/>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="4.5*" />
+                <ColumnDefinition Width="0.3*" />
+                <ColumnDefinition Width="4.5*" />
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="2*" />
+                    <RowDefinition Height="8*" />
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <Image Source="Assets/SUBWAY LOGO jpeg.png" Width="350" Height="250" />
+                </Grid>
+                <Grid Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <ListView
+                        x:Name="lvTable"
+                        ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                        Height="800"
+                        Style="{StaticResource lvTableStyle}">
+                        <ListView.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel Orientation="Horizontal" />
+                            </ItemsPanelTemplate>
+                        </ListView.ItemsPanel>
+                        <ListView.ItemTemplate>
+                            <DataTemplate x:Name="lstDataTemplate">
+                                <Grid HorizontalAlignment="Center" Margin="20">
+                                    <Border Width="300" Height="200" Background="White" CornerRadius="24">
+                                        <Border.Effect>
+                                            <DropShadowEffect ShadowDepth="2" Color="#EEEEEE" BlurRadius="10" />
+                                        </Border.Effect>
+                                        <TextBlock
+                                            Style="{StaticResource TableText}"
+                                            Text="{Binding Idx}">
+                                            번 테이블
+                                        </TextBlock>
+                                    </Border>
+                                </Grid>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </Grid>
+            </Grid>
+            <Grid Grid.Column="1">
+                <Border Background="#C7C7C7" Width="5" Height="750" Margin="0 20 0 0">
+                    <Border.Effect>
+                        <DropShadowEffect ShadowDepth="2" Color="#EEEEEE" BlurRadius="10" />
+                    </Border.Effect>
+                </Border>
+            </Grid>
+            <Grid Grid.Column="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1.5*" />
+                    <RowDefinition Height="6*" />
+                    <RowDefinition Height="2.5*" />
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <Border CornerRadius="24" Background="#009841" Width="300" Height="65" Margin="0 15 0 0">
+                        <Border.Effect>
+                            <DropShadowEffect ShadowDepth="2" Color="#C7C7C7" BlurRadius="10" />
+                        </Border.Effect>
+                        <TextBlock Style="{StaticResource StatisticTitle}" Text="판매량/매출액" />
+                    </Border>
+                </Grid>
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="5*" />
+                        <ColumnDefinition Width="5*" /> 
+                    </Grid.ColumnDefinitions>
+                    <Border Background="White" Grid.ColumnSpan="2" Width="800">
+                        <Border.Effect>
+                            <DropShadowEffect ShadowDepth="-20" BlurRadius="5" Color="#EEEEEE" />
+                        </Border.Effect>
+                        <Grid Grid.Column="0">
+                            <TextBlock ></TextBlock>
+                        </Grid>
+                    </Border>
+                </Grid>
+                <Grid Grid.Row="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="5*" />
+                        <ColumnDefinition Width="5*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <Border CornerRadius="20" Width="220" Height="100" Background="#FFCC01" Padding="15 15 15 15">
+                            <Border.Effect>
+                                <DropShadowEffect ShadowDepth="2" Color="#C7C7C7" BlurRadius="10" />
+                            </Border.Effect>
+                            <Button Style="{StaticResource Button}" Content="주문추가"></Button>
+                        </Border>
+                    </Grid>
+                    <Grid Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <Border CornerRadius="20" Width="220" Height="100" Background="#009841" Padding="15 15 15 15">
+                            <Border.Effect>
+                                <DropShadowEffect ShadowDepth="2" Color="#C7C7C7" BlurRadius="10" />
+                            </Border.Effect>
+                            <Button Style="{StaticResource Button}" Content="결제하기"></Button>
+                        </Border>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </Grid>
+        <Grid Grid.Row="2" Background="#FFCC01" />
     </Grid>
 </Window>

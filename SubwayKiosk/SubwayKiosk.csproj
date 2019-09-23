@@ -55,28 +55,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Common\Category.cs" />
-    <Compile Include="Control\OrderMenuControl.xaml.cs">
-      <DependentUpon>OrderMenuControl.xaml</DependentUpon>
+    <Compile Include="Control\FoodCtrl.xaml.cs">
+      <DependentUpon>FoodCtrl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Control\OrderMenuItemControl.xaml.cs">
-      <DependentUpon>OrderMenuItemControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Control\TableControl.xaml.cs">
-      <DependentUpon>TableControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Model\Menu.cs" />
-    <Compile Include="Model\MenuData.cs" />
-    <Compile Include="Model\SubwayTable.cs" />
-    <Page Include="Control\OrderMenuControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Control\OrderMenuItemControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Control\TableControl.xaml">
+    <Compile Include="Model\TableData.cs" />
+    <Compile Include="Model\FoodData.cs" />
+    <Page Include="Control\FoodCtrl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -191,6 +175,18 @@
     <Resource Include="Assets\SUBWAY_toping\subway_007.jpg" />
     <Resource Include="Assets\SUBWAY_toping\subway_008.jpg" />
     <Resource Include="Assets\SUBWAY_toping\subway_009.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SubKiLibrary\SubKiLibrary.csproj">
+      <Project>{8f8ba934-3a49-4b6b-a804-b4c0380aec46}</Project>
+      <Name>SubKiLibrary</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Common\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\SUBWAY LOGO jpeg.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
