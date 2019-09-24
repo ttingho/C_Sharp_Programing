@@ -10,11 +10,11 @@ namespace SubwayKiosk.Model
     public class FoodData
     {
         public bool isLoaded = false;
-        public List<Food> lstMenu = null;
+        public static List<Food> lstMenu = null;
 
         public void Load()
         {
-            if(isLoaded)
+            if (isLoaded)
             {
                 return;
             }
@@ -23,7 +23,7 @@ namespace SubwayKiosk.Model
             {
                 return;
             }
-                
+
             lstMenu = new List<Food>()
             {
                 new Food(){ KrName = "쉬림프", EnName = "Shrimp", ImagePath = @"\Assets\SUBWAY_Sand\subway_001.jpg"},
@@ -38,5 +38,19 @@ namespace SubwayKiosk.Model
                 new Food(){ KrName = "로스트 치킨", EnName = "Shrimp Avocado", ImagePath = @"\Assets\SUBWAY_Sand\subway_010.jpg"},
             };
         }
+
+        public List<Food> GetFoods(Category.eCategory category)
+        {
+            List<Food> result = new List<Food>();
+            foreach (Food item in lstMenu)
+            {
+                if (item.Category == category)
+                {
+                    result.Add(item);
+                }
+            }
+            return result;
+        }
+
     }
 }
