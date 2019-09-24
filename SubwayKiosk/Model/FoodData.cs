@@ -10,7 +10,7 @@ namespace SubwayKiosk.Model
     public class FoodData
     {
         public bool isLoaded = false;
-        public List<Food> lstMenu = null;
+        public List<Food> lstFood = null;
 
         public void Load()
         {
@@ -19,12 +19,12 @@ namespace SubwayKiosk.Model
                 return;
             }
 
-            if (lstMenu != null)
+            if (lstFood != null)
             {
                 return;
             }
                 
-            lstMenu = new List<Food>()
+            lstFood = new List<Food>()
             {
                 new Food(){ KrName = "쉬림프", EnName = "Shrimp", ImagePath = @"\Assets\SUBWAY_Sand\subway_001.jpg"},
                 new Food(){ KrName = "쉬림프 아보카도", EnName = "Shrimp Avocado", ImagePath = @"\Assets\SUBWAY_Sand\subway_002.jpg"},

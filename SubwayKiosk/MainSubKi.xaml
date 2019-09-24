@@ -20,7 +20,7 @@
             <Setter Property="Foreground" Value="White" />
             <Setter Property="Background" Value="Transparent" />
             <Setter Property="FontWeight" Value="Bold" />
-            <Setter Property="FontSize" Value="30" />
+            <Setter Property="FontSize" Value="35" />
             <Setter Property="FontFamily" Value="TMONMONSORI" />
         </Style>
         <Style x:Key="StatisticTitle" TargetType="TextBlock">
@@ -35,6 +35,24 @@
             <Setter Property="HorizontalAlignment" Value="Center" />
             <Setter Property="Background" Value="Transparent" />
             <Setter Property="BorderThickness" Value="0" />
+        </Style>
+        <Style x:Key="CategoryTitle" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="30" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="Foreground" Value="#878585" />
+            <Setter Property="FontFamily" Value="TMONMONSORI" />
+            <Setter Property="Margin" Value="30 30 0 0" />
+        </Style>
+        <Style x:Key="CategoryContents" TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="TMONMONSORI" />
+            <Setter Property="FontSize" Value="25" />
+            <Setter Property="Foreground" Value="#666666" />
+        </Style>
+        <Style x:Key="ButtonBorder" TargetType="Border">
+            <Setter Property="CornerRadius" Value="20" />
+            <Setter Property="Width" Value="250" />
+            <Setter Property="Height" Value="120" />
+            <Setter Property="Padding" Value="15 15 15 15" />
         </Style>
     </Window.Resources>
     <Grid Background="#F5F5F5">
@@ -62,7 +80,7 @@
                     <Image Source="Assets/SUBWAY LOGO jpeg.png" Width="350" Height="250" />
                 </Grid>
                 <Grid Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center">
-                    <ListView
+                    <ListView SelectionChanged="LvTable_SelectionChanged"
                         x:Name="lvTable"
                         ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                         Height="800"
@@ -105,7 +123,7 @@
                     <RowDefinition Height="2.5*" />
                 </Grid.RowDefinitions>
                 <Grid Grid.Row="0">
-                    <Border CornerRadius="24" Background="#009841" Width="300" Height="65" Margin="0 15 0 0">
+                    <Border CornerRadius="24" Background="#009841" Width="320" Height="75" Margin="0 15 0 0">
                         <Border.Effect>
                             <DropShadowEffect ShadowDepth="2" Color="#C7C7C7" BlurRadius="10" />
                         </Border.Effect>
@@ -121,8 +139,57 @@
                         <Border.Effect>
                             <DropShadowEffect ShadowDepth="-20" BlurRadius="5" Color="#EEEEEE" />
                         </Border.Effect>
-                        <Grid Grid.Column="0">
-                            <TextBlock ></TextBlock>
+                        <Grid Grid.Row="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0" Grid.RowSpan="2">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="2.5*" />
+                                    <RowDefinition Height="7.5*" />
+                                </Grid.RowDefinitions>
+                                <Grid Grid.Row="0">
+                                    <StackPanel>
+                                        <Rectangle Margin="30 0 0 -120" HorizontalAlignment="Left" Fill="#FFCC01" Width="300" Height="10"/>
+                                        <TextBlock Style="{StaticResource CategoryTitle}" Text="샌드위치"></TextBlock>
+                                    </StackPanel>
+                                </Grid>
+                                <Grid Grid.Row="1">
+                                    <ListView
+                                        x:Name="lvSandwich"
+                                        ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                        Style="{StaticResource lvTableStyle}">
+                                        <ListView.ItemsPanel>
+                                            <ItemsPanelTemplate>
+                                                <WrapPanel Orientation="Vertical" />
+                                            </ItemsPanelTemplate>
+                                        </ListView.ItemsPanel>
+                                        <ListView.ItemTemplate>
+                                            <DataTemplate>
+                                                <TextBlock
+                                                    Style="{StaticResource CategoryContents}"
+                                                    Text="{Binding KrName}"/>
+                                            </DataTemplate>
+                                        </ListView.ItemTemplate>
+                                    </ListView>
+                                </Grid>
+                            </Grid>
+                            <Grid Grid.Row="1" Grid.RowSpan="2">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="2.5*" />
+                                    <RowDefinition Height="7.5*" />
+                                </Grid.RowDefinitions>
+                                <Grid Grid.Row="0">
+                                    <StackPanel>
+                                        <Rectangle Margin="30 0 0 -120" HorizontalAlignment="Left" Fill="#FFCC01" Width="300" Height="10"/>
+                                        <TextBlock Style="{StaticResource CategoryTitle}" Text="찹샐러드"></TextBlock>
+                                    </StackPanel>
+                                </Grid>
+                                <Grid Grid.Row="1">
+                                    
+                                </Grid>
+                            </Grid>
                         </Grid>
                     </Border>
                 </Grid>
@@ -132,7 +199,10 @@
                         <ColumnDefinition Width="5*" />
                     </Grid.ColumnDefinitions>
                     <Grid Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center">
-                        <Border CornerRadius="20" Width="220" Height="100" Background="#FFCC01" Padding="15 15 15 15">
+                        <Border
+                            Style="{StaticResource ButtonBorder}"
+                            Background="#FFCC01"
+                            Margin="100 0 0 0">
                             <Border.Effect>
                                 <DropShadowEffect ShadowDepth="2" Color="#C7C7C7" BlurRadius="10" />
                             </Border.Effect>
@@ -140,7 +210,10 @@
                         </Border>
                     </Grid>
                     <Grid Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center">
-                        <Border CornerRadius="20" Width="220" Height="100" Background="#009841" Padding="15 15 15 15">
+                        <Border
+                            Style="{StaticResource ButtonBorder}"
+                            Background="#009841"
+                            Margin="0 0 100 0">
                             <Border.Effect>
                                 <DropShadowEffect ShadowDepth="2" Color="#C7C7C7" BlurRadius="10" />
                             </Border.Effect>

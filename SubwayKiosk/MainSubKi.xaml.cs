@@ -41,5 +41,12 @@ namespace SubwayKiosk
             LoadMenu();
 #endif
         }
+
+        private void LvTable_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            List<Food> lstFoods = ((SubkiTable)(lvTable.SelectedItem)).FoodList;
+            lvSandwich.ItemsSource = lstFoods;
+            lvSandwich.Items.Refresh();
+        }
     }
 }
