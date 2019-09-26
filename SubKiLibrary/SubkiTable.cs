@@ -56,7 +56,7 @@ namespace SubKiLibrary
         public void Pay()
         {
             if (isPayed) return;
-            Statistic.SaledFood.Add(this);
+            //Statistic.SaledFood.Add(this);
             this.isPayed = true;
         }
     }

@@ -13,7 +13,6 @@
             <Setter Property="VerticalAlignment" Value="Center" />
             <Setter Property="HorizontalAlignment" Value="Center" />
             <Setter Property="FontSize" Value="35" />
-            <Setter Property="Foreground" Value="#878585" />
         </Style>
         <Style x:Key="Button" TargetType="Button">
             <Setter Property="BorderThickness" Value="0" />
@@ -57,24 +56,26 @@
     </Window.Resources>
     <Grid Background="#F5F5F5">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition />
+            <ColumnDefinition Width="0.4*" />
+            <ColumnDefinition Width="0.2*"/>
+            <ColumnDefinition Width="0.4*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="0.1*" />
             <RowDefinition Height="9.8*" />
             <RowDefinition Height="0.1*" />
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0" Background="#009841"/>
-        <Grid Grid.Row="1">
+        <Grid Grid.Row="0" Background="#009841" Grid.ColumnSpan="3"/>
+        <Grid Grid.Row="1" Grid.ColumnSpan="3">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="4.5*" />
-                <ColumnDefinition Width="0.3*" />
+                <ColumnDefinition Width="1.0*" />
                 <ColumnDefinition Width="4.5*" />
             </Grid.ColumnDefinitions>
             <Grid Grid.Column="0">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="2*" />
-                    <RowDefinition Height="8*" />
+                    <RowDefinition Height="0.2*" />
+                    <RowDefinition Height="0.8*" />
                 </Grid.RowDefinitions>
                 <Grid Grid.Row="0">
                     <Image Source="Assets/SUBWAY LOGO jpeg.png" Width="350" Height="250" />
@@ -92,20 +93,57 @@
                         </ListView.ItemsPanel>
                         <ListView.ItemTemplate>
                             <DataTemplate x:Name="lstDataTemplate">
-                                <Grid HorizontalAlignment="Center" Margin="20">
-                                    <Border Width="300" Height="200" Background="White" CornerRadius="24">
-                                        <Border.Effect>
-                                            <DropShadowEffect ShadowDepth="2" Color="#EEEEEE" BlurRadius="10" />
-                                        </Border.Effect>
-                                        <TextBlock
-                                            Style="{StaticResource TableText}"
-                                            Text="{Binding Idx}">
-                                            번 테이블
-                                        </TextBlock>
-                                    </Border>
+                                <Grid HorizontalAlignment="Center">
+                                    <TextBlock HorizontalAlignment="Center"
+                                        Style="{StaticResource TableText}"
+                                        Text="{Binding Idx}">번 테이블
+                                    </TextBlock>
                                 </Grid>
                             </DataTemplate>
                         </ListView.ItemTemplate>
+                        <ListView.Resources>
+                            <Style TargetType="{x:Type ListViewItem}">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type ListViewItem}">
+                                            <Border x:Name="Bd"
+                                                    Width="300" Height="200"
+                                                    HorizontalAlignment="Center"                
+                                                    CornerRadius="25"
+                                                    Margin="20"
+                                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                                    BorderThickness="{TemplateBinding BorderThickness}"
+                                                    Background="{TemplateBinding Background}"
+                                                    Padding="{TemplateBinding Padding}"
+                                                    SnapsToDevicePixels="true">
+                                                    <ContentPresenter HorizontalAlignment="Center" 
+                                                        SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                                        VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                                            </Border>
+                                            <ControlTemplate.Triggers>
+                                                <Trigger Property="IsEnabled" Value="false">
+                                                    <Setter TargetName="Bd" Property="Background" Value="Gray" />
+                                                    <Setter TargetName="Bd" Property="BorderBrush" Value="Transparent" />
+                                                </Trigger>
+                                                <Trigger Property="IsEnabled" Value="true">
+                                                    <Setter TargetName="Bd" Property="Background" Value="White" />
+                                                    <Setter TargetName="Bd" Property="BorderBrush" Value="Transparent" />
+                                                    <Setter Property="Foreground" Value="#878585" />
+                                                </Trigger>
+                                                <Trigger Property="IsMouseOver" Value="true">
+                                                    <Setter TargetName="Bd" Property="Background" Value="#009841"/>
+                                                    <Setter Property="Foreground" Value="White" />
+                                                </Trigger>
+                                                <Trigger Property="IsSelected" Value="true">
+                                                    <Setter TargetName="Bd" Property="Background" Value="#FFCC01"/>
+                                                    <Setter Property="Foreground" Value="White" />
+                                                </Trigger>
+                                            </ControlTemplate.Triggers>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </ListView.Resources>
                     </ListView>
                 </Grid>
             </Grid>
@@ -131,63 +169,185 @@
                     </Border>
                 </Grid>
                 <Grid Grid.Row="1">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="5*" />
-                        <ColumnDefinition Width="5*" /> 
-                    </Grid.ColumnDefinitions>
-                    <Border Background="White" Grid.ColumnSpan="2" Width="800">
+                    <Border Background="White" Width="800">
                         <Border.Effect>
                             <DropShadowEffect ShadowDepth="-20" BlurRadius="5" Color="#EEEEEE" />
                         </Border.Effect>
-                        <Grid Grid.Row="0">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="*" />
-                                <RowDefinition Height="*" />
-                            </Grid.RowDefinitions>
-                            <Grid Grid.Row="0" Grid.RowSpan="2">
+                        <Grid Grid.ColumnSpan="2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid Grid.Column="0">
                                 <Grid.RowDefinitions>
-                                    <RowDefinition Height="2.5*" />
-                                    <RowDefinition Height="7.5*" />
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="*" />
                                 </Grid.RowDefinitions>
-                                <Grid Grid.Row="0">
-                                    <StackPanel>
-                                        <Rectangle Margin="30 0 0 -120" HorizontalAlignment="Left" Fill="#FFCC01" Width="300" Height="10"/>
-                                        <TextBlock Style="{StaticResource CategoryTitle}" Text="샌드위치"></TextBlock>
-                                    </StackPanel>
-                                </Grid>
-                                <Grid Grid.Row="1">
-                                    <ListView
+                                <Grid Grid.Row="0" Grid.RowSpan="2">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="1.3*" />
+                                        <RowDefinition Height="8.7*" />
+                                    </Grid.RowDefinitions>
+
+                                    <Grid Grid.Row="0" VerticalAlignment="Top" HorizontalAlignment="Left">
+                                        <StackPanel VerticalAlignment="Top">
+                                            <Rectangle Margin="30 0 0 -120" HorizontalAlignment="Left" Fill="#FFCC01" Width="360" Height="10"/>
+                                            <TextBlock Style="{StaticResource CategoryTitle}" Text="샌드위치"></TextBlock>
+                                        </StackPanel>
+                                    </Grid>
+
+                                    <Grid Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Left">
+                                        <ListView
                                         x:Name="lvSandwich"
                                         ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                        Width="390"
+                                        Height="240"
                                         Style="{StaticResource lvTableStyle}">
-                                        <ListView.ItemsPanel>
-                                            <ItemsPanelTemplate>
-                                                <WrapPanel Orientation="Vertical" />
-                                            </ItemsPanelTemplate>
-                                        </ListView.ItemsPanel>
-                                        <ListView.ItemTemplate>
-                                            <DataTemplate>
-                                                <TextBlock
-                                                    Style="{StaticResource CategoryContents}"
-                                                    Text="{Binding KrName}"/>
-                                            </DataTemplate>
-                                        </ListView.ItemTemplate>
-                                    </ListView>
+                                            <ListView.ItemsPanel>
+                                                <ItemsPanelTemplate>
+                                                    <WrapPanel Orientation="Vertical" />
+                                                </ItemsPanelTemplate>
+                                            </ListView.ItemsPanel>
+                                            <ListView.ItemTemplate>
+                                                <DataTemplate>
+                                                    <StackPanel Orientation="Horizontal" Margin="40 0 0 10">
+                                                        <TextBlock
+                                                        Style="{StaticResource CategoryContents}"
+                                                        Text="{Binding KrName}"/>
+                                                        <TextBlock
+                                                        Margin="10 0 0 0"
+                                                        Style="{StaticResource CategoryContents}"
+                                                        Text="{Binding Count, StringFormat=[{0:N0}]}"/>
+                                                    </StackPanel>
+                                                </DataTemplate>
+                                            </ListView.ItemTemplate>
+                                        </ListView>
+                                    </Grid>
+                                </Grid>
+                                <Grid Grid.Row="1" Grid.RowSpan="2">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="0.25*" />
+                                        <RowDefinition Height="0.75*" />
+                                    </Grid.RowDefinitions>
+                                    <Grid Grid.Row="0" VerticalAlignment="Top" HorizontalAlignment="Left">
+                                        <StackPanel>
+                                            <Rectangle Margin="30 0 0 -120" HorizontalAlignment="Left" Fill="#FFCC01" Width="360" Height="10"/>
+                                            <TextBlock Style="{StaticResource CategoryTitle}" Text="찹샐러드"></TextBlock>
+                                        </StackPanel>
+                                    </Grid>
+                                    <Grid Grid.Row="1">
+                                        <Grid Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Left">
+                                            <ListView
+                                            x:Name="lvChoppedSalad" 
+                                            Width="390"
+                                            Height="200"
+                                            ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                            Style="{StaticResource lvTableStyle}">
+                                                <ListView.ItemsPanel>
+                                                    <ItemsPanelTemplate>
+                                                        <WrapPanel Orientation="Vertical" />
+                                                    </ItemsPanelTemplate>
+                                                </ListView.ItemsPanel>
+                                                <ListView.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <StackPanel Orientation="Horizontal" Margin="40 0 0 10">
+                                                            <TextBlock
+                                                            Style="{StaticResource CategoryContents}"
+                                                            Text="{Binding KrName}"/>
+                                                            <TextBlock
+                                                            Margin="10 0 0 0"
+                                                            Style="{StaticResource CategoryContents}"
+                                                            Text="{Binding Count, StringFormat=[{0:N0}]}"/>
+                                                        </StackPanel>
+                                                    </DataTemplate>
+                                                </ListView.ItemTemplate>
+                                            </ListView>
+                                        </Grid>
+                                    </Grid>
                                 </Grid>
                             </Grid>
-                            <Grid Grid.Row="1" Grid.RowSpan="2">
+                            <Grid Grid.Column="1">
                                 <Grid.RowDefinitions>
-                                    <RowDefinition Height="2.5*" />
-                                    <RowDefinition Height="7.5*" />
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="*" />
                                 </Grid.RowDefinitions>
-                                <Grid Grid.Row="0">
-                                    <StackPanel>
-                                        <Rectangle Margin="30 0 0 -120" HorizontalAlignment="Left" Fill="#FFCC01" Width="300" Height="10"/>
-                                        <TextBlock Style="{StaticResource CategoryTitle}" Text="찹샐러드"></TextBlock>
-                                    </StackPanel>
+                                <Grid Grid.Row="0" Grid.RowSpan="2">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="1.3*" />
+                                        <RowDefinition Height="8.7*" />
+                                    </Grid.RowDefinitions>
+                                    <Grid Grid.Row="0" VerticalAlignment="Top" HorizontalAlignment="Left">
+                                        <StackPanel VerticalAlignment="Top">
+                                            <Rectangle Margin="30 0 0 -120" HorizontalAlignment="Left" Fill="#C7C7C7" Width="360" Height="10"/>
+                                            <TextBlock Style="{StaticResource CategoryTitle}" Text="사이드, 음료"></TextBlock>
+                                        </StackPanel>
+                                    </Grid>
+                                    <Grid Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Left">
+                                        <ListView
+                                        x:Name="lvSideAndDrink"
+                                        ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                        Width="390"
+                                        Height="240"
+                                        Style="{StaticResource lvTableStyle}">
+                                            <ListView.ItemsPanel>
+                                                <ItemsPanelTemplate>
+                                                    <WrapPanel Orientation="Vertical" />
+                                                </ItemsPanelTemplate>
+                                            </ListView.ItemsPanel>
+                                            <ListView.ItemTemplate>
+                                                <DataTemplate>
+                                                    <StackPanel Orientation="Horizontal" Margin="40 0 0 10">
+                                                        <TextBlock
+                                                        Style="{StaticResource CategoryContents}"
+                                                        Text="{Binding KrName}"/>
+                                                        <TextBlock
+                                                        Margin="10 0 0 0"
+                                                        Style="{StaticResource CategoryContents}"
+                                                        Text="{Binding Count, StringFormat=[{0:N0}]}"/>
+                                                    </StackPanel>
+                                                </DataTemplate>
+                                            </ListView.ItemTemplate>
+                                        </ListView>
+                                    </Grid>
                                 </Grid>
-                                <Grid Grid.Row="1">
-                                    
+                                <Grid Grid.Row="1" Grid.RowSpan="2">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="0.25*" />
+                                        <RowDefinition Height="0.75*" />
+                                    </Grid.RowDefinitions>
+                                    <Grid Grid.Row="0" VerticalAlignment="Top" HorizontalAlignment="Left">
+                                        <StackPanel VerticalAlignment="Top">
+                                            <Rectangle Margin="30 0 0 -120" HorizontalAlignment="Left" Fill="#C7C7C7" Width="360" Height="10"/>
+                                            <TextBlock Style="{StaticResource CategoryTitle}" Text="추가 토핑"></TextBlock>
+                                        </StackPanel>
+                                    </Grid>
+                                    <Grid Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Left">
+                                        <ListView
+                                        x:Name="lvTopping"
+                                        ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                        Width="390"
+                                        Height="220"
+                                        Style="{StaticResource lvTableStyle}">
+                                            <ListView.ItemsPanel>
+                                                <ItemsPanelTemplate>
+                                                    <WrapPanel Orientation="Vertical" />
+                                                </ItemsPanelTemplate>
+                                            </ListView.ItemsPanel>
+                                            <ListView.ItemTemplate>
+                                                <DataTemplate>
+                                                    <StackPanel Orientation="Horizontal" Margin="40 0 0 10">
+                                                        <TextBlock
+                                                        Style="{StaticResource CategoryContents}"
+                                                        Text="{Binding KrName}"/>
+                                                        <TextBlock
+                                                        Margin="10 0 0 0"
+                                                        Style="{StaticResource CategoryContents}"
+                                                        Text="{Binding Count, StringFormat=[{0:N0}]}"/>
+                                                    </StackPanel>
+                                                </DataTemplate>
+                                            </ListView.ItemTemplate>
+                                        </ListView>
+                                    </Grid>
                                 </Grid>
                             </Grid>
                         </Grid>
@@ -223,6 +383,6 @@
                 </Grid>
             </Grid>
         </Grid>
-        <Grid Grid.Row="2" Background="#FFCC01" />
+        <Grid Grid.Row="2" Background="#FFCC01" Grid.ColumnSpan="3" />
     </Grid>
 </Window>

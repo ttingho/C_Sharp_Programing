@@ -13,8 +13,7 @@ namespace SubKiLibrary
             Sandwich,
             ChoppedSalads,
             AdditionalToppings,
-            Side,
-            Drink,
+            SideAndDrink,
         }
     }
 }

@@ -44,9 +44,51 @@ namespace SubwayKiosk
 
         private void LvTable_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            List<Food> lstFoods = ((SubkiTable)(lvTable.SelectedItem)).FoodList;
-            lvSandwich.ItemsSource = lstFoods;
+            List<Food> lstSandwichFoods = new List<Food>();
+            List<Food> lstChoppedSaladFoods = new List<Food>();
+            List<Food> lstSideAndDrinks = new List<Food>();
+            List<Food> lstToppings = new List<Food>();
+            foreach (Food food in ((SubkiTable)(lvTable.SelectedItem)).FoodList)
+            {
+                if (food.Category == Category.eCategory.Sandwich)
+                {
+                    lstSandwichFoods.Add(food);
+                }
+
+                if (food.Category == Category.eCategory.ChoppedSalads)
+                {
+                    lstChoppedSaladFoods.Add(food);
+                }
+
+                if (food.Category == Category.eCategory.SideAndDrink)
+                {
+                    lstSideAndDrinks.Add(food);
+                }
+
+                if (food.Category == Category.eCategory.AdditionalToppings)
+                {
+                    lstToppings.Add(food);
+                }
+            }
+            lvSandwich.ItemsSource = lstSandwichFoods;
+            lvChoppedSalad.ItemsSource = lstChoppedSaladFoods;
+            lvSideAndDrink.ItemsSource = lstSideAndDrinks;
+            lvTopping.ItemsSource = lstToppings;
+
             lvSandwich.Items.Refresh();
+            lvChoppedSalad.Items.Refresh();
+            lvSideAndDrink.Items.Refresh();
+            lvTopping.Items.Refresh();
+
+            ResetMenuSelection();
+        }
+
+        private void ResetMenuSelection()
+        {
+            lvSandwich.SelectedIndex = -1;
+            lvChoppedSalad.SelectedIndex = -1;
+            lvSideAndDrink.SelectedIndex = -1;
+            lvTopping.SelectedIndex = -1;
         }
     }
 }
