@@ -383,6 +383,14 @@
                 </Grid>
             </Grid>
         </Grid>
-        <Grid Grid.Row="2" Background="#FFCC01" Grid.ColumnSpan="3" />
+        <Grid Grid.Row="2" Background="#FFCC01" Grid.ColumnSpan="3">
+            <TextBlock 
+                x:Name="dClock"
+                FontSize="25"
+                Foreground="#C7C7C7"
+                Margin="0 -35 10 0"
+                HorizontalAlignment="Right"
+                FontWeight="Bold" />
+        </Grid>
     </Grid>
 </Window>

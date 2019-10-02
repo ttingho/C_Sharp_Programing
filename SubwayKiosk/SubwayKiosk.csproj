@@ -55,12 +55,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Control\FoodCtrl.xaml.cs">
-      <DependentUpon>FoodCtrl.xaml</DependentUpon>
+    <Compile Include="Control\OrderCtrl.xaml.cs">
+      <DependentUpon>OrderCtrl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Model\TableData.cs" />
     <Compile Include="Model\FoodData.cs" />
-    <Page Include="Control\FoodCtrl.xaml">
+    <Page Include="Control\OrderCtrl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 using SubKiLibrary;
 
 
@@ -27,6 +28,15 @@ namespace SubwayKiosk
         {
             InitializeComponent();
             Loaded += MainSubKi_Loaded;
+            DispatcherTimer timer = new DispatcherTimer();
+            timer.Interval = new TimeSpan(0, 0, 1);
+            timer.Tick += Timer_Tick;
+            timer.Start();
+        }
+
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            dClock.Text = DateTime.Now.ToString();
         }
 
         private void MainSubKi_Loaded(object sender, RoutedEventArgs e)

@@ -4,6 +4,5 @@
              xmlns:local="clr-namespace:SubwayKiosk"
              StartupUri="MainSubKi.xaml">
     <Application.Resources>
-         
     </Application.Resources>
 </Application>
