@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SubwayKiosk"
+        xmlns:localControl="clr-namespace:SubwayKiosk.Control"
         mc:Ignorable="d"
         Title="SubWay">
     <Window.Resources>
@@ -55,18 +56,13 @@
         </Style>
     </Window.Resources>
     <Grid Background="#F5F5F5">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="0.4*" />
-            <ColumnDefinition Width="0.2*"/>
-            <ColumnDefinition Width="0.4*"/>
-        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="0.1*" />
             <RowDefinition Height="9.8*" />
             <RowDefinition Height="0.1*" />
         </Grid.RowDefinitions>
         <Grid Grid.Row="0" Background="#009841" Grid.ColumnSpan="3"/>
-        <Grid Grid.Row="1" Grid.ColumnSpan="3">
+        <Grid x:Name="mainSubki_contents" Grid.Row="1" Grid.ColumnSpan="3">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="4.5*" />
                 <ColumnDefinition Width="1.0*" />
@@ -116,7 +112,7 @@
                                                     Background="{TemplateBinding Background}"
                                                     Padding="{TemplateBinding Padding}"
                                                     SnapsToDevicePixels="true">
-                                                    <ContentPresenter HorizontalAlignment="Center" 
+                                                <ContentPresenter HorizontalAlignment="Center" 
                                                         SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
                                                         VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
                                             </Border>
@@ -366,7 +362,7 @@
                             <Border.Effect>
                                 <DropShadowEffect ShadowDepth="2" Color="#C7C7C7" BlurRadius="10" />
                             </Border.Effect>
-                            <Button Style="{StaticResource Button}" Content="주문추가"></Button>
+                            <Button Style="{StaticResource Button}" Content="주문추가" Click="Add_Order_Button_Click"></Button>
                         </Border>
                     </Grid>
                     <Grid Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center">
@@ -382,6 +378,9 @@
                     </Grid>
                 </Grid>
             </Grid>
+        </Grid>
+        <Grid Grid.Row="1">
+            <localControl:OrderCtrl x:Name="order_ctrl" Visibility="Collapsed"></localControl:OrderCtrl>
         </Grid>
         <Grid Grid.Row="2" Background="#FFCC01" Grid.ColumnSpan="3">
             <TextBlock 

@@ -100,5 +100,11 @@ namespace SubwayKiosk
             lvSideAndDrink.SelectedIndex = -1;
             lvTopping.SelectedIndex = -1;
         }
+
+        private void Add_Order_Button_Click(object sender, RoutedEventArgs e)
+        {
+            mainSubki_contents.Visibility = Visibility.Collapsed;
+            order_ctrl.Visibility = Visibility.Visible;
+        }
     }
 }
