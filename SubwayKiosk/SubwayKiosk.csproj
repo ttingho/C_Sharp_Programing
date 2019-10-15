@@ -58,6 +58,7 @@
     <Compile Include="Control\OrderCtrl.xaml.cs">
       <DependentUpon>OrderCtrl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Model\CategoryData.cs" />
     <Compile Include="Model\TableData.cs" />
     <Compile Include="Model\FoodData.cs" />
     <Page Include="Control\OrderCtrl.xaml">

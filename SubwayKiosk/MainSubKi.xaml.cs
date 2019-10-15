@@ -44,6 +44,7 @@ namespace SubwayKiosk
             Debug.WriteLine("MainSubki_Loaded");
             App.foodData.Load();
             App.tableData.Load();
+            App.categoryData.Load();
 #if true
             //lvMain.ItemsSource = App.foodData.lstMenu;
             lvTable.ItemsSource = App.tableData.SubkiTables;

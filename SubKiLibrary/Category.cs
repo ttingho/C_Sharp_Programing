@@ -8,6 +8,7 @@ namespace SubKiLibrary
 {
     public class Category
     {
+        public string CategoryName { get; set; }
         public enum eCategory
         {
             Sandwich,

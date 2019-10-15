@@ -5,7 +5,219 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SubwayKiosk.Control"
              mc:Ignorable="d">
-    <Grid Background="Black">
-        
+    <UserControl.Resources>
+        <Style x:Key="CategoryTitle" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="30" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="Foreground" Value="#666666" />
+            <Setter Property="FontFamily" Value="TMONMONSORI" />
+            <Setter Property="Margin" Value="30 30 0 0" />
+        </Style>
+        <Style x:Key="lvCategory" TargetType="ListView">
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BorderThickness" Value="0" />
+        </Style>
+        <Style x:Key="tbOrderInfo" TargetType="TextBlock">
+            <Setter Property="VerticalAlignment" Value="Top" />
+            <Setter Property="HorizontalAlignment" Value="Left" />
+            <Setter Property="Foreground" Value="#C7C7C7" />
+            <Setter Property="FontSize" Value="30" />
+            <Setter Property="FontFamily" Value="TMONMONSORI" />
+            <Setter Property="Margin" Value="15 15 0 0" />
+        </Style>
+        <Style x:Key="ButtonBorder" TargetType="Border">
+            <Setter Property="CornerRadius" Value="30" />
+            <Setter Property="Width" Value="280" />
+            <Setter Property="Height" Value="130" />
+            <Setter Property="Padding" Value="10" />
+        </Style>
+        <Style x:Key="Button" TargetType="Button">
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="FontSize" Value="40" />
+            <Setter Property="FontFamily" Value="TMONMONSORI" />
+        </Style>
+        <Style x:Key="lvTableStyle" TargetType="ListView">
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BorderThickness" Value="0" />
+        </Style>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.75*" />
+            <RowDefinition Height="0.25*" />
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.2*" />
+                <ColumnDefinition Width="0.8*" />
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.2*" />
+                    <RowDefinition Height="0.8*" />
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <Image Source="../Assets/SUBWAY LOGO jpeg.png" Width="350" Height="250" />
+                </Grid>
+                <Grid Grid.Row="1">
+                    <Grid VerticalAlignment="Top" HorizontalAlignment="Left">
+                        <ListView
+                            x:Name="lvCategory"
+                            ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                            Style="{StaticResource lvCategory}">
+                            <ListView.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <WrapPanel Orientation="Vertical" />
+                                </ItemsPanelTemplate>
+                            </ListView.ItemsPanel>
+                            <ListView.Resources>
+                                <Style TargetType="{x:Type ListViewItem}">
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="{x:Type ListViewItem}">
+                                                <Grid>
+                                                    <Rectangle
+                                                    x:Name="Ra"
+                                                    HorizontalAlignment="Left"
+                                                    Fill="#C7C7C7"
+                                                    Margin="30 25 0 70"
+                                                    Width="320"
+                                                    Height="10">
+                                                    </Rectangle>
+                                                    <StackPanel Margin="5 -100 0 0" VerticalAlignment="Center" HorizontalAlignment="Left">
+                                                        <TextBlock Style="{StaticResource CategoryTitle}" Text="{Binding CategoryName}"></TextBlock>
+                                                    </StackPanel>
+                                                </Grid>
+                                                <ControlTemplate.Triggers>
+                                                    <Trigger Property="IsEnabled" Value="false">
+                                                        <Setter TargetName="Ra" Property="Fill" Value="#C7C7C7" />
+                                                    </Trigger>
+                                                    <Trigger Property="IsEnabled" Value="true">
+                                                        <Setter TargetName="Ra" Property="Fill" Value="#C7C7C7" />
+                                                    </Trigger>
+                                                    <Trigger Property="IsMouseOver" Value="true">
+                                                        <Setter TargetName="Ra" Property="Fill" Value="#009841"/>
+                                                    </Trigger>
+                                                    <Trigger Property="IsSelected" Value="true">
+                                                        <Setter TargetName="Ra" Property="Fill" Value="#FFCC01"/>
+                                                    </Trigger>
+                                                </ControlTemplate.Triggers>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </ListView.Resources>
+                        </ListView>
+                    </Grid>
+                </Grid>
+            </Grid>
+            <Grid Grid.Column="1">
+                <ListView
+                x:Name="lvOrderMenu"
+                ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                Style="{StaticResource lvTableStyle}">
+                    <ListView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel Orientation="Vertical" />
+                        </ItemsPanelTemplate>
+                    </ListView.ItemsPanel>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Border Background="White" Margin="40">
+                                    <Border.Effect>
+                                        <DropShadowEffect ShadowDepth="-20" BlurRadius="5" Color="#EEEEEE" />
+                                    </Border.Effect>
+                                </Border>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
+        </Grid>
+        <Grid Grid.Row="1" Background="White">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.6*" />
+                <ColumnDefinition Width="0.4*" />
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.2*" />
+                        <RowDefinition Height="0.8" />
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <TextBlock
+                            Style="{StaticResource tbOrderInfo}"
+                            Text="주문 메뉴">
+                        </TextBlock>
+                    </Grid>
+                </Grid>
+                <Grid Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.2*" />
+                        <RowDefinition Height="0.8" />
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <TextBlock
+                            Style="{StaticResource tbOrderInfo}"
+                            Text="가격">
+                        </TextBlock>
+                    </Grid>
+                </Grid>
+                <Grid Grid.Column="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.2*" />
+                        <RowDefinition Height="0.8" />
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <TextBlock
+                            Style="{StaticResource tbOrderInfo}"
+                            Text="합계">
+                        </TextBlock>
+                    </Grid>
+                </Grid>
+            </Grid>
+            <Grid Grid.Column="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <Border
+                        Style="{StaticResource ButtonBorder}"
+                        Background="#FFCC01"
+                        Margin="0 0 0 0">
+                        <Border.Effect>
+                            <DropShadowEffect ShadowDepth="2" Color="#C7C7C7" BlurRadius="10" />
+                        </Border.Effect>
+                        <Button Style="{StaticResource Button}" Content="주문하기"></Button>
+                    </Border>
+                </Grid>
+                <Grid Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <Border
+                        Style="{StaticResource ButtonBorder}"
+                        Background="#009841"
+                        Margin="0 0 0 0">
+                        <Border.Effect>
+                            <DropShadowEffect ShadowDepth="2" Color="#C7C7C7" BlurRadius="10" />
+                        </Border.Effect>
+                        <Button Style="{StaticResource Button}" Content="주문취소"></Button>
+                    </Border>
+                </Grid>
+            </Grid>
+        </Grid>
     </Grid>
 </UserControl>

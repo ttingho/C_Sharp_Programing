@@ -16,5 +16,6 @@ namespace SubwayKiosk
     {
         public static FoodData foodData = new FoodData();
         public static TableData tableData = new TableData();
+        public static CategoryData categoryData = new CategoryData();
     }
 }

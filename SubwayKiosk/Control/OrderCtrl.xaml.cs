@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,7 +24,15 @@ namespace SubwayKiosk.Control
     {
         public OrderCtrl()
         {
+            Loaded += OrderCtrl_Loaded;
             InitializeComponent();
+        }
+
+        private void OrderCtrl_Loaded(object sender, RoutedEventArgs e)
+        {
+            Debug.WriteLine("OrderCtrl_Loaded");
+
+            lvCategory.ItemsSource = App.categoryData.SubkiCategorys;
         }
     }
 }
