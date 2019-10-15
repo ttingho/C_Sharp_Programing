@@ -77,7 +77,8 @@
                     <Image Source="Assets/SUBWAY LOGO jpeg.png" Width="350" Height="250" />
                 </Grid>
                 <Grid Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center">
-                    <ListView SelectionChanged="LvTable_SelectionChanged"
+                    <ListView
+                        SelectionChanged="LvTable_SelectionChanged"
                         x:Name="lvTable"
                         ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                         Height="800"

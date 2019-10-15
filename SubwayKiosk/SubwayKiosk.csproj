@@ -189,5 +189,8 @@
   <ItemGroup>
     <Resource Include="Assets\SUBWAY LOGO jpeg.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\SUBWAY_Sal\subway_022.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
