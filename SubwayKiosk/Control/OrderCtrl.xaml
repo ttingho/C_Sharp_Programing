@@ -41,7 +41,7 @@
             <Setter Property="FontSize" Value="40" />
             <Setter Property="FontFamily" Value="TMONMONSORI" />
         </Style>
-        <Style x:Key="lvTableStyle" TargetType="ListView">
+        <Style x:Key="lvStyle" TargetType="ListView">
             <Setter Property="VerticalAlignment" Value="Center" />
             <Setter Property="HorizontalAlignment" Value="Center" />
             <Setter Property="Background" Value="Transparent" />
@@ -71,6 +71,7 @@
                         <ListView
                             x:Name="lvCategory"
                             ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                            SelectionChanged="LvCategory_SelectionChanged"
                             Style="{StaticResource lvCategory}">
                             <ListView.ItemsPanel>
                                 <ItemsPanelTemplate>
@@ -120,23 +121,58 @@
             </Grid>
             <Grid Grid.Column="1">
                 <ListView
-                x:Name="lvOrderMenu"
-                ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                Style="{StaticResource lvTableStyle}">
+                    x:Name="lvOrderMenu"
+                    ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                    Width="1400"
+                    Height="650"
+                    Style="{StaticResource lvStyle}">
                     <ListView.ItemsPanel>
                         <ItemsPanelTemplate>
-                            <WrapPanel Orientation="Vertical" />
+                            <WrapPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" />
                         </ItemsPanelTemplate>
                     </ListView.ItemsPanel>
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <StackPanel Orientation="Horizontal">
-                                <Border Background="White" Margin="40">
+                            <Grid VerticalAlignment="Top" HorizontalAlignment="Center">
+                                <Border Background="White" Margin="10" Width="310" Height="290">
                                     <Border.Effect>
-                                        <DropShadowEffect ShadowDepth="-20" BlurRadius="5" Color="#EEEEEE" />
+                                        <DropShadowEffect ShadowDepth="5" BlurRadius="5" Color="#EEEEEE" />
                                     </Border.Effect>
+                                    <StackPanel Width="310" Height="290">
+                                        <Image Source="{Binding ImagePath}" Width="280" Height="180"/>
+                                        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                                            <TextBlock
+                                                VerticalAlignment="Center"
+                                                HorizontalAlignment="Center"
+                                                Foreground="#666666"
+                                                FontSize="25"
+                                                FontWeight="Bold"
+                                                FontFamily="TMONMONSORI"
+                                                Text="{Binding KrName}" />
+                                            <TextBlock
+                                                Margin="0 5 0 0"
+                                                VerticalAlignment="Center"
+                                                HorizontalAlignment="Center"
+                                                Foreground="#C7C7C7"
+                                                FontSize="15"
+                                                FontWeight="Bold"
+                                                FontFamily="TMONMONSORI"
+                                                Text="{Binding EnName}" />
+                                            <TextBlock
+                                                Margin="0 10 0 10"
+                                                VerticalAlignment="Center"
+                                                HorizontalAlignment="Center"
+                                                Foreground="#009841"
+                                                FontSize="18"
+                                                FontWeight="Bold"
+                                                FontFamily="TMONMONSORI"
+                                                Text="{Binding Price}" >
+                                                원
+                                            </TextBlock>
+                                        </StackPanel>
+                                    </StackPanel>
                                 </Border>
-                            </StackPanel>
+                            </Grid>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>

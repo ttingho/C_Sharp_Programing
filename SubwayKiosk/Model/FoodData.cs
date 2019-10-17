@@ -10,7 +10,7 @@ namespace SubwayKiosk.Model
     public class FoodData
     {
         public bool isLoaded = false;
-        public static List<Food> lstMenu = null;
+        public List<Food> lstMenu = null;
 
         public void Load()
         {
@@ -43,12 +43,12 @@ namespace SubwayKiosk.Model
                 new Food(){ KrName = "베지", EnName = "Veggie Delite", ImagePath = @"\Assets\SUBWAY_Sand\subway_015.jpg", Category = Category.eCategory.Sandwich },
                 new Food(){ KrName = "스테이크 & 치즈", EnName = "Steak & Cheese", ImagePath = @"\Assets\SUBWAY_Sand\subway_016.jpg", Category = Category.eCategory.Sandwich },
                 new Food(){ KrName = "터키 베이컨 아보카도", EnName = "Turkey Bacon Avocado", ImagePath = @"\Assets\SUBWAY_Sand\subway_017.jpg", Category = Category.eCategory.Sandwich },
-                new Food(){ KrName = "치킨 베이컨 랜치", EnName = "Chicken & Bacon Ranch", ImagePath = @"\Assets\SUBWAY_Sand\subway_0018.jpg", Category = Category.eCategory.Sandwich },
+                new Food(){ KrName = "치킨 베이컨 랜치", EnName = "Chicken & Bacon Ranch", ImagePath = @"\Assets\SUBWAY_Sand\subway_018.jpg", Category = Category.eCategory.Sandwich },
                 new Food(){ KrName = "써브웨이 멜트", EnName = "Subway Melt", ImagePath = @"\Assets\SUBWAY_Sand\subway_019.jpg", Category = Category.eCategory.Sandwich },
                 new Food(){ KrName = "터키 베이컨", EnName = "Turkey Bacon", ImagePath = @"\Assets\SUBWAY_Sand\subway_020.jpg", Category = Category.eCategory.Sandwich },
                 new Food(){ KrName = "스파이시 이탈리안", EnName = "Spicy Italian", ImagePath = @"\Assets\SUBWAY_Sand\subway_021.jpg", Category = Category.eCategory.Sandwich },
                 new Food(){ KrName = "치킨 데리야끼", EnName = "Chicken Teriyaki", ImagePath = @"\Assets\SUBWAY_Sand\subway_022.jpg", Category = Category.eCategory.Sandwich },
-                new Food(){ KrName = "블랙 포레스트햄 & 에그, 치즈", EnName = "Black Forest Ham & Egg, Cheese", ImagePath = @"\Assets\SUBWAY_Sand\subway_023.jpg", Category = Category.eCategory.Sandwich },
+                new Food(){ KrName = "블랙 포레스트햄, 에그, 치즈", EnName = "Black Forest Ham & Egg, Cheese", ImagePath = @"\Assets\SUBWAY_Sand\subway_023.jpg", Category = Category.eCategory.Sandwich },
                 new Food(){ KrName = "웨스턴, 에그 & 치즈", EnName = "Western, Egg & Cheese", ImagePath = @"\Assets\SUBWAY_Sand\subway_024.jpg", Category = Category.eCategory.Sandwich },
                 new Food(){ KrName = "베이컨, 에그 & 치즈", EnName = "Bacon, Egg & Cheese", ImagePath = @"\Assets\SUBWAY_Sand\subway_025.jpg", Category = Category.eCategory.Sandwich },
                 new Food(){ KrName = "스테이크, 에그 & 치즈", EnName = "Steak, Egg & Cheese", ImagePath = @"\Assets\SUBWAY_Sand\subway_026.jpg", Category = Category.eCategory.Sandwich },
@@ -62,8 +62,8 @@ namespace SubwayKiosk.Model
                 new Food(){ KrName = "페퍼로니", EnName = "Pepperoni", ImagePath = @"\Assets\SUBWAY_toping\subway_008.jpg", Category = Category.eCategory.AdditionalToppings },
                 new Food(){ KrName = "더블 치즈", EnName = "Double Cheese", ImagePath = @"\Assets\SUBWAY_toping\subway_009.jpg", Category = Category.eCategory.AdditionalToppings },
                 new Food(){ KrName = "웨지 포테이토", EnName = "Ovenbaked Wedge Potatoes", ImagePath = @"\Assets\SUBWAY_Side\subway_001.jpg", Category = Category.eCategory.SideAndDrink },
-                new Food(){ KrName = "Cheesy 웨지 포테이토", EnName = "Cheesy Ovenbaked Wedge Potatoes", ImagePath = @"\Assets\SUBWAY_Side\subway_002.jpg", Category = Category.eCategory.SideAndDrink },
-                new Food(){ KrName = "Bacon Cheesy 웨지 포테이토", EnName = "Bacon Cheesy Ovenbaked Wedge Potatoes", ImagePath = @"\Assets\SUBWAY_Side\subway_003.jpg", Category = Category.eCategory.SideAndDrink },
+                new Food(){ KrName = "치즈 웨지 포테이토", EnName = "Cheesy Wedge Potatoes", ImagePath = @"\Assets\SUBWAY_Side\subway_002.jpg", Category = Category.eCategory.SideAndDrink },
+                new Food(){ KrName = "베이컨 치즈 웨지 포테이토", EnName = "Bacon Cheesy Wedge Potatoes", ImagePath = @"\Assets\SUBWAY_Side\subway_003.jpg", Category = Category.eCategory.SideAndDrink },
                 new Food(){ KrName = "브로콜리 체타 수프", EnName = "Broccoli Cheddar Soup", ImagePath = @"\Assets\SUBWAY_Side\subway_004.jpg", Category = Category.eCategory.SideAndDrink },
                 new Food(){ KrName = "베이크 포테이토 수프", EnName = "Baked Potato Soup", ImagePath = @"\Assets\SUBWAY_Side\subway_005.jpg", Category = Category.eCategory.SideAndDrink },
                 new Food(){ KrName = "더블 초코칩 쿠키", EnName = "Double Chocolate Chip", ImagePath = @"\Assets\SUBWAY_Side\subway_006.jpg", Category = Category.eCategory.SideAndDrink },
@@ -76,7 +76,7 @@ namespace SubwayKiosk.Model
                 new Food(){ KrName = "해쉬브라운", EnName = "Hash Brown", ImagePath = @"\Assets\SUBWAY_Side\subway_013.jpg", Category = Category.eCategory.SideAndDrink },
                 new Food(){ KrName = "쉬림프", EnName = "Shrimp", ImagePath = @"\Assets\SUBWAY_Sal\subway_001.jpg", Category = Category.eCategory.ChoppedSalads },
                 new Food(){ KrName = "쉬림프 아보카도", EnName = "Shrimp Avocado", ImagePath = @"\Assets\SUBWAY_Sal\subway_002.jpg", Category = Category.eCategory.ChoppedSalads},
-                new Food(){ KrName = "로티세리 치킨", EnName = "Rotisserie Chicken", ImagePath = @"\Assets\SUBWAY_Sand\subway_003.jpg", Category = Category.eCategory.ChoppedSalads },
+                new Food(){ KrName = "로티세리 치킨", EnName = "Rotisserie Chicken", ImagePath = @"\Assets\SUBWAY_Sal\subway_003.jpg", Category = Category.eCategory.ChoppedSalads },
                 new Food(){ KrName = "풀드포크", EnName = "Pulled Pork", ImagePath = @"\Assets\SUBWAY_Sal\subway_004.jpg", Category = Category.eCategory.ChoppedSalads },
                 new Food(){ KrName = "이탈리안 비엠티", EnName = "Italian B.M.T.", ImagePath = @"\Assets\SUBWAY_Sal\subway_005.jpg", Category = Category.eCategory.ChoppedSalads },
                 new Food(){ KrName = "비엘티", EnName = "B.L.T.", ImagePath = @"\Assets\SUBWAY_Sal\subway_006.jpg", Category = Category.eCategory.ChoppedSalads },
@@ -91,7 +91,7 @@ namespace SubwayKiosk.Model
                 new Food(){ KrName = "베지", EnName = "Veggie Delite", ImagePath = @"\Assets\SUBWAY_Sal\subway_015.jpg", Category = Category.eCategory.ChoppedSalads },
                 new Food(){ KrName = "스테이크 & 치즈", EnName = "Steak & Cheese", ImagePath = @"\Assets\SUBWAY_Sal\subway_016.jpg", Category = Category.eCategory.ChoppedSalads },
                 new Food(){ KrName = "터키 베이컨 아보카도", EnName = "Turkey Bacon Avocado", ImagePath = @"\Assets\SUBWAY_Sal\subway_017.jpg", Category = Category.eCategory.ChoppedSalads },
-                new Food(){ KrName = "치킨 베이컨 랜치", EnName = "Chicken & Bacon Ranch", ImagePath = @"\Assets\SUBWAY_Sal\subway_0018.jpg", Category = Category.eCategory.ChoppedSalads },
+                new Food(){ KrName = "치킨 베이컨 랜치", EnName = "Chicken & Bacon Ranch", ImagePath = @"\Assets\SUBWAY_Sal\subway_018.jpg", Category = Category.eCategory.ChoppedSalads },
                 new Food(){ KrName = "써브웨이 멜트", EnName = "Subway Melt", ImagePath = @"\Assets\SUBWAY_Sal\subway_019.jpg", Category = Category.eCategory.ChoppedSalads },
                 new Food(){ KrName = "터키 베이컨", EnName = "Turkey Bacon", ImagePath = @"\Assets\SUBWAY_Sal\subway_020.jpg", Category = Category.eCategory.ChoppedSalads },
                 new Food(){ KrName = "스파이시 이탈리안", EnName = "Spicy Italian", ImagePath = @"\Assets\SUBWAY_Sal\subway_021.jpg", Category = Category.eCategory.ChoppedSalads },

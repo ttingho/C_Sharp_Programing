@@ -1,4 +1,6 @@
-﻿using System;
+﻿using SubKiLibrary;
+using SubwayKiosk.Model.changeCategoryType;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -22,6 +24,8 @@ namespace SubwayKiosk.Control
     /// </summary>
     public partial class OrderCtrl : UserControl
     {
+        private CategoryType categoryType = new CategoryType();
+
         public OrderCtrl()
         {
             Loaded += OrderCtrl_Loaded;
@@ -33,6 +37,33 @@ namespace SubwayKiosk.Control
             Debug.WriteLine("OrderCtrl_Loaded");
 
             lvCategory.ItemsSource = App.categoryData.SubkiCategorys;
+        }
+
+        private void LvCategory_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Category category = lvCategory.SelectedItem as Category;
+            if (category == null) return;
+            updateOrderMenu(category);
+
+        }
+
+        private void updateOrderMenu(Category category)
+        {
+            List<Food> lstOrderFoods = new List<Food>();
+            foreach(Food food in App.foodData.lstMenu)
+            {
+                if (categoryCheck(food, category))
+                {
+                    lstOrderFoods.Add(food);
+                }
+            }
+            lvOrderMenu.ItemsSource = lstOrderFoods;
+            lvOrderMenu.Items.Refresh();
+        }
+
+        private bool categoryCheck(Food food, Category category)
+        {
+            return food.Category.Equals(categoryType.ChangeEnum(category.CategoryName));
         }
     }
 }
