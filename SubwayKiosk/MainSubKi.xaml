@@ -374,7 +374,7 @@
                             <Border.Effect>
                                 <DropShadowEffect ShadowDepth="2" Color="#C7C7C7" BlurRadius="10" />
                             </Border.Effect>
-                            <Button Style="{StaticResource Button}" Content="결제하기"></Button>
+                            <Button Style="{StaticResource Button}" Content="결제하기" Click="Payment_Button_Click"></Button>
                         </Border>
                     </Grid>
                 </Grid>
@@ -382,6 +382,9 @@
         </Grid>
         <Grid Grid.Row="1">
             <localControl:OrderCtrl x:Name="order_ctrl" Visibility="Collapsed"></localControl:OrderCtrl>
+            <localControl:LoadingCtrl x:Name="loading_ctrl" Visibility="Collapsed"></localControl:LoadingCtrl>
+            <localControl:PaymentCtrl x:Name="payment_ctrl" Visibility="Collapsed"></localControl:PaymentCtrl>
+            <localControl:StatisticCtrl x:Name="statistic_ctrl" Visibility="Collapsed"></localControl:StatisticCtrl>
         </Grid>
         <Grid Grid.Row="2" Background="#FFCC01" Grid.ColumnSpan="3">
             <TextBlock 

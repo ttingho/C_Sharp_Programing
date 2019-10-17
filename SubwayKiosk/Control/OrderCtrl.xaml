@@ -239,7 +239,7 @@
                         <Border.Effect>
                             <DropShadowEffect ShadowDepth="2" Color="#C7C7C7" BlurRadius="10" />
                         </Border.Effect>
-                        <Button Style="{StaticResource Button}" Content="주문하기"></Button>
+                        <Button Style="{StaticResource Button}" Content="주문하기" Click="Button_Click_Add_Order"></Button>
                     </Border>
                 </Grid>
                 <Grid Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center">
@@ -250,7 +250,7 @@
                         <Border.Effect>
                             <DropShadowEffect ShadowDepth="2" Color="#C7C7C7" BlurRadius="10" />
                         </Border.Effect>
-                        <Button Style="{StaticResource Button}" Content="주문취소"></Button>
+                        <Button Style="{StaticResource Button}" Content="주문취소" Click="Button_Click_Cancel_Order"></Button>
                     </Border>
                 </Grid>
             </Grid>

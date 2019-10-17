@@ -22,10 +22,16 @@ namespace SubwayKiosk.Control
     /// <summary>
     /// Interaction logic for OrderCtrl.xaml
     /// </summary>
+    public class OrderArgs : EventArgs
+    {
+        public string tableId { get; set; }
+
+    }
     public partial class OrderCtrl : UserControl
     {
         private CategoryType categoryType = new CategoryType();
-
+        public delegate void OrderComplateHandler(object sender, OrderArgs args);
+        public event OrderComplateHandler OnOrderComplate;
         public OrderCtrl()
         {
             Loaded += OrderCtrl_Loaded;
@@ -64,6 +70,25 @@ namespace SubwayKiosk.Control
         private bool categoryCheck(Food food, Category category)
         {
             return food.Category.Equals(categoryType.ChangeEnum(category.CategoryName));
+        }
+
+        private void Button_Click_Add_Order(object sender, RoutedEventArgs e)
+        {
+            OrderArgs args = new OrderArgs();
+            args.tableId = "3";
+            if (OnOrderComplate != null)
+            {
+                OnOrderComplate(this, args);
+            }
+        }
+
+        private void Button_Click_Cancel_Order(object sender, RoutedEventArgs e)
+        {
+            OrderArgs args = new OrderArgs();
+            if (OnOrderComplate != null)
+            {
+                OnOrderComplate(this, args);
+            }
         }
     }
 }

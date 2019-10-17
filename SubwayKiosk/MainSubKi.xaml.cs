@@ -15,7 +15,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 using SubKiLibrary;
-
+using SubwayKiosk.Control;
 
 namespace SubwayKiosk
 {
@@ -32,6 +32,13 @@ namespace SubwayKiosk
             timer.Interval = new TimeSpan(0, 0, 1);
             timer.Tick += Timer_Tick;
             timer.Start();
+            order_ctrl.OnOrderComplate += OrderCtrl_OnOrderComplate;
+        }
+
+        private void OrderCtrl_OnOrderComplate(object sender, OrderArgs args)
+        {
+            mainSubki_contents.Visibility = Visibility.Visible;
+            order_ctrl.Visibility = Visibility.Collapsed;
         }
 
         private void Timer_Tick(object sender, EventArgs e)
@@ -104,8 +111,28 @@ namespace SubwayKiosk
 
         private void Add_Order_Button_Click(object sender, RoutedEventArgs e)
         {
-            mainSubki_contents.Visibility = Visibility.Collapsed;
-            order_ctrl.Visibility = Visibility.Visible;
+            if (lvTable.SelectedItem != null)
+            {
+                mainSubki_contents.Visibility = Visibility.Collapsed;
+                order_ctrl.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                MessageBox.Show("테이블을 선택해 주세요.");
+            }
+        }
+
+        private void Payment_Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (lvTable.SelectedItem != null)
+            {
+                mainSubki_contents.Visibility = Visibility.Collapsed;
+                payment_ctrl.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                MessageBox.Show("테이블을 선택해 주세요.");
+            }
         }
     }
 }
