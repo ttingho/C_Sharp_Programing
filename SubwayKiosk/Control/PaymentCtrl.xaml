@@ -7,6 +7,84 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-            
+        <Border Background="#FFFFFF" Width="620" Height="620" CornerRadius="30">
+            <Border.Effect>
+                <DropShadowEffect ShadowDepth="5" Color="#eeeeee" BlurRadius="10" />
+            </Border.Effect>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.1*" />
+                    <RowDefinition Height="0.9*" />
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.8*" />
+                        <ColumnDefinition Width="0.2*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="0">
+                        <StackPanel VerticalAlignment="Top">
+                            <Rectangle Margin="30 0 0 -120" HorizontalAlignment="Left" Fill="#FFCC01" Width="280" Height="10"/>
+                            <TextBlock
+                            Margin="33 18 0 0"
+                            FontSize="40"
+                            FontWeight="Bold"
+                            FontFamily="TMONMONSORI"
+                            Foreground="#666666"
+                            Text="결제 방법" />
+                        </StackPanel>
+                    </Grid>
+                    <Grid Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Right">
+                        <Button
+                            Margin="0 0 25 0"
+                            Foreground="#707070"
+                            FontSize="35"
+                            BorderThickness="0"
+                            Background="Transparent"
+                            FontFamily="TMONMONSORI">
+                            X
+                        </Button>
+                    </Grid>
+                </Grid>
+                <Grid Grid.Row="1" Grid.ColumnSpan="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <Border Width="250" Height="400" CornerRadius="30" Padding="15" Background="#019840">
+                            <Border.Effect>
+                                <DropShadowEffect ShadowDepth="3" BlurRadius="5" Color="#eeeeee" />
+                            </Border.Effect>
+                            <Button
+                                Background="Transparent"
+                                BorderThickness="0"
+                                Foreground="White"
+                                FontSize="40"
+                                FontWeight="Bold"
+                                FontFamily="TMONMONSORI">
+                                현금
+                            </Button>
+                        </Border>
+                    </Grid>
+                    <Grid Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <Border Width="250" Height="400" CornerRadius="30" Padding="15" Background="#FFCC01">
+                            <Border.Effect>
+                                <DropShadowEffect ShadowDepth="3" BlurRadius="5" Color="#eeeeee" />
+                            </Border.Effect>
+                            <Button
+                                Background="Transparent"
+                                BorderThickness="0"
+                                Foreground="White"
+                                FontSize="40"
+                                FontWeight="Bold"
+                                FontFamily="TMONMONSORI">
+                                카드
+                            </Button>
+                        </Border>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </Border>
     </Grid>
 </UserControl>
