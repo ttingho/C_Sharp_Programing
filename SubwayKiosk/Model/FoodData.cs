@@ -48,7 +48,7 @@ namespace SubwayKiosk.Model
                 new Food(){ KrName = "터키 베이컨 SW", EnName = "Turkey Bacon", ImagePath = @"\Assets\SUBWAY_Sand\subway_020.jpg", Category = Category.eCategory.Sandwich, Price = 5900 },
                 new Food(){ KrName = "스파이시 이탈리안 SW", EnName = "Spicy Italian", ImagePath = @"\Assets\SUBWAY_Sand\subway_021.jpg", Category = Category.eCategory.Sandwich, Price = 5900 },
                 new Food(){ KrName = "치킨 데리야끼 SW", EnName = "Chicken Teriyaki", ImagePath = @"\Assets\SUBWAY_Sand\subway_022.jpg", Category = Category.eCategory.Sandwich, Price = 6300 },
-                new Food(){ KrName = "블랙 포레스트햄, 에그, 치즈 SW", EnName = "Black Forest Ham & Egg, Cheese", ImagePath = @"\Assets\SUBWAY_Sand\subway_023.jpg", Category = Category.eCategory.Sandwich, Price = 6300},
+                new Food(){ KrName = "블랙 햄 & 에그, 치즈 SW", EnName = "Black Ham & Egg, Cheese", ImagePath = @"\Assets\SUBWAY_Sand\subway_023.jpg", Category = Category.eCategory.Sandwich, Price = 6300},
                 new Food(){ KrName = "웨스턴, 에그 & 치즈 SW", EnName = "Western, Egg & Cheese", ImagePath = @"\Assets\SUBWAY_Sand\subway_024.jpg", Category = Category.eCategory.Sandwich, Price = 6300 },
                 new Food(){ KrName = "베이컨, 에그 & 치즈 SW", EnName = "Bacon, Egg & Cheese", ImagePath = @"\Assets\SUBWAY_Sand\subway_025.jpg", Category = Category.eCategory.Sandwich, Price = 6300 },
                 new Food(){ KrName = "스테이크, 에그 & 치즈 SW", EnName = "Steak, Egg & Cheese", ImagePath = @"\Assets\SUBWAY_Sand\subway_026.jpg", Category = Category.eCategory.Sandwich, Price = 6300 },
