@@ -382,7 +382,7 @@
         </Grid>
         <Grid Grid.Row="1">
             <localControl:OrderCtrl x:Name="order_ctrl" Visibility="Collapsed"></localControl:OrderCtrl>
-            <localControl:LoadingCtrl x:Name="loading_ctrl" Visibility="Collapsed"></localControl:LoadingCtrl>
+ 
             <localControl:PaymentCtrl x:Name="payment_ctrl" Visibility="Collapsed"></localControl:PaymentCtrl>
             <localControl:StatisticCtrl x:Name="statistic_ctrl" Visibility="Collapsed"></localControl:StatisticCtrl>
         </Grid>
@@ -395,5 +395,6 @@
                 HorizontalAlignment="Right"
                 FontWeight="Bold" />
         </Grid>
+        <localControl:LoadingCtrl x:Name="loading_ctrl" Grid.RowSpan="3" Grid.ColumnSpan="3"/>
     </Grid>
 </Window>

@@ -2,6 +2,7 @@
 using SubwayKiosk.Model.changeCategoryType;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
@@ -24,11 +25,13 @@ namespace SubwayKiosk.Control
     /// </summary>
     public class OrderArgs : EventArgs
     {
-        public string tableId { get; set; }
+        public SubkiTable SelectedTable { get; set; }
 
     }
     public partial class OrderCtrl : UserControl
     {
+        private List<Food> lstOrderFoods = new List<Food>();
+        public SubkiTable OrderMenu = new SubkiTable();
         private CategoryType categoryType = new CategoryType();
         public delegate void OrderComplateHandler(object sender, OrderArgs args);
         public event OrderComplateHandler OnOrderComplate;
@@ -37,12 +40,19 @@ namespace SubwayKiosk.Control
             Loaded += OrderCtrl_Loaded;
             InitializeComponent();
         }
+        
 
         private void OrderCtrl_Loaded(object sender, RoutedEventArgs e)
         {
             Debug.WriteLine("OrderCtrl_Loaded");
-
+            lvShoppingBasket.ItemsSource = OrderMenu.FoodList;
+            total_price.Text = OrderMenu.TotalPrice + " 원";
             lvCategory.ItemsSource = App.categoryData.SubkiCategorys;
+        }
+
+        private void FoodList_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        {
+            lvShoppingBasket.ItemsSource = OrderMenu.FoodList;
         }
 
         private void LvCategory_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -55,12 +65,12 @@ namespace SubwayKiosk.Control
 
         private void updateOrderMenu(Category category)
         {
-            List<Food> lstOrderFoods = new List<Food>();
+            lstOrderFoods = new List<Food>();
             foreach(Food food in App.foodData.lstMenu)
             {
                 if (categoryCheck(food, category))
                 {
-                    lstOrderFoods.Add(food);
+                    lstOrderFoods.Add(food.Clone());
                 }
             }
             lvOrderMenu.ItemsSource = lstOrderFoods;
@@ -75,7 +85,13 @@ namespace SubwayKiosk.Control
         private void Button_Click_Add_Order(object sender, RoutedEventArgs e)
         {
             OrderArgs args = new OrderArgs();
-            args.tableId = "3";
+            args.SelectedTable = OrderMenu;
+            OrderMenu = new SubkiTable();
+            lvShoppingBasket.ItemsSource = new List<Food>();
+            total_price.Text = "0 원";
+            lvCategory.Items.Refresh();
+            lvOrderMenu.Items.Refresh();
+            lvShoppingBasket.Items.Refresh();
             if (OnOrderComplate != null)
             {
                 OnOrderComplate(this, args);
@@ -85,10 +101,66 @@ namespace SubwayKiosk.Control
         private void Button_Click_Cancel_Order(object sender, RoutedEventArgs e)
         {
             OrderArgs args = new OrderArgs();
+            OrderMenu = new SubkiTable();
+            lvShoppingBasket.ItemsSource = new List<Food>();
+            total_price.Text = "0 원";
+            lvCategory.Items.Refresh();
+            lvOrderMenu.Items.Refresh();
+            lvShoppingBasket.Items.Refresh();
+
             if (OnOrderComplate != null)
             {
                 OnOrderComplate(this, args);
             }
+        }
+
+        private void Button_Click_Plus_Menu(object sender, RoutedEventArgs e)
+        {
+            Food food = ((ListViewItem)lvOrderMenu.ContainerFromElement(sender as Button)).Content as Food;
+            if (food == null) return;
+
+            var item = OrderMenu.FoodList.Where(x => x.KrName.Equals(food.KrName)).FirstOrDefault();
+            if (item == null)
+            {
+                food.Count++;
+                OrderMenu.TotalPrice += food.Clone().Price;
+                OrderMenu.FoodList.Add(food.Clone());
+                total_price.Text = OrderMenu.TotalPrice + " 원";
+            }
+            else
+            {
+                item.Count++;
+                total_price.Text = OrderMenu.TotalPrice + " 원";
+            }
+            lvShoppingBasket.ItemsSource = OrderMenu.FoodList;
+            lvShoppingBasket.Items.Refresh();
+        }
+
+        private void Button_Click_Minus_Menu(object sender, RoutedEventArgs e)
+        {
+            Food food = ((ListViewItem)lvOrderMenu.ContainerFromElement(sender as Button)).Content as Food;
+            if (food == null) return;
+
+            var item = OrderMenu.FoodList.Where(x => x.KrName.Equals(food.KrName)).FirstOrDefault();
+            if(item == null)
+            {
+                return;
+            }
+            item.Count--;
+
+            if (item.Count == 0)
+            {
+                OrderMenu.FoodList.Remove(item);
+                lvShoppingBasket.Items.Refresh();
+                total_price.Text = OrderMenu.TotalPrice + " 원";
+                return;
+            }
+            else
+            {
+                total_price.Text = OrderMenu.TotalPrice + " 원";
+            }
+            lvShoppingBasket.ItemsSource = OrderMenu.FoodList;
+            lvShoppingBasket.Items.Refresh();
         }
     }
 }

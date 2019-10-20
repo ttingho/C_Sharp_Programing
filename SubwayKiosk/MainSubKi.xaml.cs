@@ -39,6 +39,21 @@ namespace SubwayKiosk
         {
             mainSubki_contents.Visibility = Visibility.Visible;
             order_ctrl.Visibility = Visibility.Collapsed;
+            var temp = new SubkiTable();
+            if (args.SelectedTable != null)
+            {
+                temp = App.tableData.SubkiTables.Where(x => x.Idx == args.SelectedTable.Idx).FirstOrDefault();
+                temp = args.SelectedTable;
+                for (int i = 0; i < App.tableData.SubkiTables.Count; i++)
+                {
+                    if (temp.Idx == App.tableData.SubkiTables[i].Idx)
+                    {
+                        App.tableData.SubkiTables[i] = temp;
+                        Replace_OrderMenuList();
+                        break;
+                    }
+                }
+            }
         }
 
         private void Timer_Tick(object sender, EventArgs e)
@@ -48,25 +63,24 @@ namespace SubwayKiosk
 
         private void MainSubKi_Loaded(object sender, RoutedEventArgs e)
         {
-            Debug.WriteLine("MainSubki_Loaded");
-            App.foodData.Load();
-            App.tableData.Load();
-            App.categoryData.Load();
-#if true
-            //lvMain.ItemsSource = App.foodData.lstMenu;
             lvTable.ItemsSource = App.tableData.SubkiTables;
-#else
-            LoadMenu();
-#endif
         }
 
         private void LvTable_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Replace_OrderMenuList();
+
+            ResetMenuSelection();
+        }
+
+        private void Replace_OrderMenuList()
         {
             List<Food> lstSandwichFoods = new List<Food>();
             List<Food> lstChoppedSaladFoods = new List<Food>();
             List<Food> lstSideAndDrinks = new List<Food>();
             List<Food> lstToppings = new List<Food>();
-            foreach (Food food in ((SubkiTable)(lvTable.SelectedItem)).FoodList)
+
+            foreach (Food food in ((SubkiTable)lvTable.SelectedItem).FoodList)
             {
                 if (food.Category == Category.eCategory.Sandwich)
                 {
@@ -97,8 +111,6 @@ namespace SubwayKiosk
             lvChoppedSalad.Items.Refresh();
             lvSideAndDrink.Items.Refresh();
             lvTopping.Items.Refresh();
-
-            ResetMenuSelection();
         }
 
         private void ResetMenuSelection()
@@ -113,6 +125,10 @@ namespace SubwayKiosk
         {
             if (lvTable.SelectedItem != null)
             {
+                var Table = (SubkiTable)lvTable.SelectedItem;
+                order_ctrl.OrderMenu = Table;
+                order_ctrl.lvShoppingBasket.ItemsSource = order_ctrl.OrderMenu.FoodList;
+                order_ctrl.lvShoppingBasket.Items.Refresh();
                 mainSubki_contents.Visibility = Visibility.Collapsed;
                 order_ctrl.Visibility = Visibility.Visible;
             }

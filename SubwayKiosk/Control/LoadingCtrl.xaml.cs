@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -12,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace SubwayKiosk.Control
 {
@@ -23,6 +25,16 @@ namespace SubwayKiosk.Control
         public LoadingCtrl()
         {
             InitializeComponent();
+            Loading();
+        }
+
+        private async void Loading()
+        {
+            App.categoryData.Load();
+            App.foodData.Load();
+            App.tableData.Load();
+            await Task.Delay(3000);
+            this.Visibility = Visibility.Collapsed;
         }
     }
 }

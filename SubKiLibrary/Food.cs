@@ -32,5 +32,19 @@ namespace SubKiLibrary
         }
         public string ImagePath { get; set; }
         public eCategory Category { get; set; }
+
+        public Food Clone()
+        {
+            Food retval = new Food();
+
+            retval.Count = count;
+            retval.Category = Category;
+            retval.EnName = EnName;
+            retval.ImagePath = ImagePath;
+            retval.KrName = KrName;
+            retval.Price = Price;
+            retval.Category = Category;
+            return retval;
+        }
     }
 }

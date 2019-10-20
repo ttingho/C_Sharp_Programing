@@ -11,7 +11,8 @@ namespace SubKiLibrary
         public enum ePayment
         {
             Card,
-            Cash
+            Cash,
+            empty
         }
     }
 }
