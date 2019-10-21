@@ -23,12 +23,13 @@
             <Setter Property="FontSize" Value="35" />
             <Setter Property="FontFamily" Value="TMONMONSORI" />
         </Style>
-        <Style x:Key="StatisticTitle" TargetType="TextBlock">
+        <Style x:Key="StatisticTitle" TargetType="Button">
             <Setter Property="FontSize" Value="30" />
             <Setter Property="FontFamily" Value="TMONMONSORI" />
             <Setter Property="Foreground" Value="White" />
             <Setter Property="VerticalAlignment" Value="Center" />
             <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="Background" Value="Transparent" />
         </Style>
         <Style x:Key="lvTableStyle" TargetType="ListView">
             <Setter Property="VerticalAlignment" Value="Center" />
@@ -162,7 +163,9 @@
                         <Border.Effect>
                             <DropShadowEffect ShadowDepth="2" Color="#C7C7C7" BlurRadius="10" />
                         </Border.Effect>
-                        <TextBlock Style="{StaticResource StatisticTitle}" Text="판매량/매출액" />
+                        <Button Style="{StaticResource StatisticTitle}" Width="290" Height="60" Click="Statistic_Button_Click">
+                            판매량/매출액 통계
+                        </Button>
                     </Border>
                 </Grid>
                 <Grid Grid.Row="1">
@@ -382,7 +385,6 @@
         </Grid>
         <Grid Grid.Row="1">
             <localControl:OrderCtrl x:Name="order_ctrl" Visibility="Collapsed"></localControl:OrderCtrl>
- 
             <localControl:PaymentCtrl x:Name="payment_ctrl" Visibility="Collapsed"></localControl:PaymentCtrl>
             <localControl:StatisticCtrl x:Name="statistic_ctrl" Visibility="Collapsed"></localControl:StatisticCtrl>
         </Grid>

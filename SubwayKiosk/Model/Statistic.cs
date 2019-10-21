@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,7 +10,17 @@ namespace SubKiLibrary
 {
     public class Statistic
     {
-        public static List<SubkiTable> SaledFood = new List<SubkiTable>();
+        public List<SubkiTable> SaledFood = new List<SubkiTable>();
+
+        private IEnumerable<Food> TotalCatagori(ObservableCollection<Food> foodList, Category.eCategory category)
+        {
+            throw new NotImplementedException();
+        }
+
+        private IEnumerable<Food> TotalName(ObservableCollection<Food> foodList, string name)
+        {
+            throw new NotImplementedException();
+        }
 
         public int GetTotalSalesByDate(DateTime day)
         {
@@ -24,7 +35,7 @@ namespace SubKiLibrary
             return foods.FindAll(x => x.Category == category);
         }
 
-        private List<Food> TotalName(List<Food> foods, String name)
+        private List<Food> TotalName(List<Food> foods, string name)
         {
             return foods.FindAll(x => x.EnName == name);
         }
@@ -40,7 +51,7 @@ namespace SubKiLibrary
             return AllFood.Sum(x => x.Price * x.Count);
         }
 
-        public int GetTotalSalesByName(String name)
+        public int GetTotalSalesByName(string name)
         {
             List<Food> AllFood = new List<Food>();
 
@@ -50,6 +61,5 @@ namespace SubKiLibrary
             }
             return AllFood.Sum(x => x.Price * x.Count);
         }
-
     }
 }

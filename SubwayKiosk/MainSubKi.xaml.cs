@@ -33,6 +33,7 @@ namespace SubwayKiosk
             timer.Tick += Timer_Tick;
             timer.Start();
             order_ctrl.OnOrderComplate += OrderCtrl_OnOrderComplate;
+            payment_ctrl.OnPaymentComplate += PaymentCtrl_OnPaymentComplate;
         }
 
         private void OrderCtrl_OnOrderComplate(object sender, OrderArgs args)
@@ -44,6 +45,25 @@ namespace SubwayKiosk
                 if (args.SelectedTable.Idx == App.tableData.SubkiTables[i].Idx)
                 {
                     App.tableData.SubkiTables[i] = args.SelectedTable;
+                    int temp = lvTable.SelectedIndex;
+                    lvTable.ItemsSource = App.tableData.SubkiTables;
+                    lvTable.Items.Refresh();
+                    lvTable.SelectedIndex = temp;
+                    Replace_OrderMenuList();
+                    return;
+                }
+            }
+        }
+
+        private void PaymentCtrl_OnPaymentComplate(object sender, PaymentArgs args)
+        {
+            mainSubki_contents.Visibility = Visibility.Visible;
+            payment_ctrl.Visibility = Visibility.Collapsed;
+            for (int i = 0; i < App.tableData.SubkiTables.Count; i++)
+            {
+                if (args.PaymentTable.Idx == App.tableData.SubkiTables[i].Idx)
+                {
+                    App.tableData.SubkiTables[i] = args.PaymentTable;
                     int temp = lvTable.SelectedIndex;
                     lvTable.ItemsSource = App.tableData.SubkiTables;
                     lvTable.Items.Refresh();
@@ -146,6 +166,10 @@ namespace SubwayKiosk
         {
             if (lvTable.SelectedItem != null)
             {
+                var Table = (SubkiTable)lvTable.SelectedItem;
+                payment_ctrl.ctrlPaymentTable = Table.Clone();
+
+                payment_ctrl.paymentTable = Table.Clone();
                 mainSubki_contents.Visibility = Visibility.Collapsed;
                 payment_ctrl.Visibility = Visibility.Visible;
             }
@@ -153,6 +177,12 @@ namespace SubwayKiosk
             {
                 MessageBox.Show("테이블을 선택해 주세요.");
             }
+        }
+
+        private void Statistic_Button_Click(object sender, RoutedEventArgs e)
+        {
+            mainSubki_contents.Visibility = Visibility.Collapsed;
+            statistic_ctrl.Visibility = Visibility.Visible;
         }
     }
 }

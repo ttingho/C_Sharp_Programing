@@ -1,4 +1,5 @@
-﻿using SubwayKiosk.Model;
+﻿using SubKiLibrary;
+using SubwayKiosk.Model;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -17,5 +18,6 @@ namespace SubwayKiosk
         public static FoodData foodData = new FoodData();
         public static TableData tableData = new TableData();
         public static CategoryData categoryData = new CategoryData();
+        public static Statistic statistic = new Statistic();
     }
 }

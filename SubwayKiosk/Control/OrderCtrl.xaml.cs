@@ -33,8 +33,8 @@ namespace SubwayKiosk.Control
         private List<Food> lstOrderFoods = new List<Food>();
         public SubkiTable OrderMenu = new SubkiTable();
         public SubkiTable ctrlOrderMenu = new SubkiTable();
-
         private CategoryType categoryType = new CategoryType();
+
         public delegate void OrderComplateHandler(object sender, OrderArgs args);
         public event OrderComplateHandler OnOrderComplate;
 
