@@ -39,19 +39,17 @@ namespace SubwayKiosk
         {
             mainSubki_contents.Visibility = Visibility.Visible;
             order_ctrl.Visibility = Visibility.Collapsed;
-            var temp = new SubkiTable();
-            if (args.SelectedTable != null)
+            for (int i = 0; i < App.tableData.SubkiTables.Count; i++)
             {
-                temp = App.tableData.SubkiTables.Where(x => x.Idx == args.SelectedTable.Idx).FirstOrDefault();
-                temp = args.SelectedTable;
-                for (int i = 0; i < App.tableData.SubkiTables.Count; i++)
+                if (args.SelectedTable.Idx == App.tableData.SubkiTables[i].Idx)
                 {
-                    if (temp.Idx == App.tableData.SubkiTables[i].Idx)
-                    {
-                        App.tableData.SubkiTables[i] = temp;
-                        Replace_OrderMenuList();
-                        break;
-                    }
+                    App.tableData.SubkiTables[i] = args.SelectedTable;
+                    int temp = lvTable.SelectedIndex;
+                    lvTable.ItemsSource = App.tableData.SubkiTables;
+                    lvTable.Items.Refresh();
+                    lvTable.SelectedIndex = temp;
+                    Replace_OrderMenuList();
+                    return;
                 }
             }
         }
@@ -80,6 +78,10 @@ namespace SubwayKiosk
             List<Food> lstSideAndDrinks = new List<Food>();
             List<Food> lstToppings = new List<Food>();
 
+            if(lvTable.SelectedItem == null)
+            {
+                return;
+            }
             foreach (Food food in ((SubkiTable)lvTable.SelectedItem).FoodList)
             {
                 if (food.Category == Category.eCategory.Sandwich)
@@ -126,8 +128,10 @@ namespace SubwayKiosk
             if (lvTable.SelectedItem != null)
             {
                 var Table = (SubkiTable)lvTable.SelectedItem;
-                order_ctrl.OrderMenu = Table;
-                order_ctrl.lvShoppingBasket.ItemsSource = order_ctrl.OrderMenu.FoodList;
+                order_ctrl.ctrlOrderMenu = Table.Clone();
+
+                order_ctrl.lvShoppingBasket.ItemsSource = order_ctrl.ctrlOrderMenu.FoodList;
+                order_ctrl.OrderMenu = Table.Clone();
                 order_ctrl.lvShoppingBasket.Items.Refresh();
                 mainSubki_contents.Visibility = Visibility.Collapsed;
                 order_ctrl.Visibility = Visibility.Visible;

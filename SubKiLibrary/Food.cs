@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -45,6 +46,11 @@ namespace SubKiLibrary
             retval.Price = Price;
             retval.Category = Category;
             return retval;
+        }
+
+        public static explicit operator Food(ObservableCollection<Food> v)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -72,5 +72,22 @@ namespace SubKiLibrary
             //Statistic.SaledFood.Add(this);
             this.isPayed = true;
         }
+
+        public SubkiTable Clone()
+        {
+            var retval = new SubkiTable();
+
+            retval.Idx = Idx;
+            retval.FoodList = new ObservableCollection<Food>();
+            for(int i = 0; i < FoodList.Count; i++)
+            {
+                retval.FoodList.Add(FoodList[i].Clone());
+            }
+            retval.date = date;
+            retval.isPayed = isPayed;
+            retval.Payment = Payment;
+
+            return retval;
+        }
     }
 }
