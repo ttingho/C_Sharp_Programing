@@ -34,6 +34,13 @@ namespace SubwayKiosk
             timer.Start();
             order_ctrl.OnOrderComplate += OrderCtrl_OnOrderComplate;
             payment_ctrl.OnPaymentComplate += PaymentCtrl_OnPaymentComplate;
+            statistic_ctrl.OnStatisticComplate += StatisticCtrl_OnStatisticComplate;
+        }
+
+        private void StatisticCtrl_OnStatisticComplate(object sender, StatisticArgs args)
+        {
+            mainSubki_contents.Visibility = Visibility.Visible;
+            statistic_ctrl.Visibility = Visibility.Collapsed;
         }
 
         private void OrderCtrl_OnOrderComplate(object sender, OrderArgs args)

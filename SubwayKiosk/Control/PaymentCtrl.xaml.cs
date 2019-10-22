@@ -62,7 +62,7 @@ namespace SubwayKiosk.Control
                 paymentCtrl_selected_payment.Visibility = Visibility.Visible;
                 paymentCtrl_confirmation.Visibility = Visibility.Collapsed;
             }
-
+            
             if (OnPaymentComplate != null)
             {
                 OnPaymentComplate(this, args);

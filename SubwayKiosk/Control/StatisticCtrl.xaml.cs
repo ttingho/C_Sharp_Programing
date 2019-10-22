@@ -18,11 +18,27 @@ namespace SubwayKiosk.Control
     /// <summary>
     /// Interaction logic for StatisticCtrl.xaml
     /// </summary>
+    public class StatisticArgs : EventArgs
+    {
+        // Something..
+    }
     public partial class StatisticCtrl : UserControl
     {
+        public delegate void StatisticComplateHandler(object sender, StatisticArgs args);
+        public event StatisticComplateHandler OnStatisticComplate;
         public StatisticCtrl()
         {
             InitializeComponent();
+        }
+
+        private void Home_Button_Click(object sender, RoutedEventArgs e)
+        {
+            StatisticArgs args = new StatisticArgs();
+
+            if (OnStatisticComplate != null)
+            {
+                OnStatisticComplate(this, args);
+            }
         }
     }
 }

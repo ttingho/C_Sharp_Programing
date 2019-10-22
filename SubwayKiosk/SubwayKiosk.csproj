@@ -217,5 +217,8 @@
   <ItemGroup>
     <Resource Include="Assets\SUBWAY_Sal\subway_022.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Home_icon.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

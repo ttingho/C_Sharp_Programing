@@ -6,7 +6,139 @@
              xmlns:local="clr-namespace:SubwayKiosk.Control"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-            
+    <UserControl.Resources>
+        <Image x:Key="Home" Source="../Assets/Home_icon.png" />
+        <Style x:Key="CategoryButton" TargetType="Button">
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="FontFamily" Value="TMONMONSORI" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="Width" Value="120" />
+            <Setter Property="Height" Value="50" />
+        </Style>
+        <Style x:Key="CategoryBorder" TargetType="Border">
+            <Setter Property="Width" Value="130" />
+            <Setter Property="Height" Value="60" />
+            <Setter Property="Background" Value="#009841" />
+            <Setter Property="CornerRadius" Value="15" />
+            <Setter Property="Margin" Value="10" />
+        </Style>
+    </UserControl.Resources>
+    <Grid Grid.ColumnSpan="2">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.45*" />
+            <ColumnDefinition Width="0.55*" />
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Border Width="650" Height="900" Background="White">
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="5" ShadowDepth="5" Color="#EEEEEE" />
+                </Border.Effect>
+                <Grid VerticalAlignment="Top" HorizontalAlignment="Center" Grid.RowSpan="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.1*" />
+                        <RowDefinition Height="0.9*" />
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <Rectangle Fill="#7FCB9F" Width="650" Height="10" />
+                    </Grid>
+                    <Grid Grid.Row="1" Width="650" Height="890" Grid.RowSpan="3">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="0.1*" />
+                            <RowDefinition Height="0.1*" />
+                            <RowDefinition Height="0.8*" />
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="0">
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <Border Style="{StaticResource CategoryBorder}">
+                                    <Border.Effect>
+                                        <DropShadowEffect BlurRadius="2" ShadowDepth="2" Color="#EEEEEE" />
+                                    </Border.Effect>
+                                    <Button Style="{StaticResource CategoryButton}">샌드위치</Button>
+                                </Border>
+                                <Border Style="{StaticResource CategoryBorder}">
+                                    <Border.Effect>
+                                        <DropShadowEffect BlurRadius="2" ShadowDepth="2" Color="#EEEEEE" />
+                                    </Border.Effect>
+                                    <Button Style="{StaticResource CategoryButton}">찹샐러드</Button>
+                                </Border>
+                                <Border Style="{StaticResource CategoryBorder}">
+                                    <Border.Effect>
+                                        <DropShadowEffect BlurRadius="2" ShadowDepth="2" Color="#EEEEEE" />
+                                    </Border.Effect>
+                                    <Button Style="{StaticResource CategoryButton}">사이드, 음료</Button>
+                                </Border>
+                                <Border Style="{StaticResource CategoryBorder}">
+                                    <Border.Effect>
+                                        <DropShadowEffect BlurRadius="2" ShadowDepth="2" Color="#EEEEEE" />
+                                    </Border.Effect>
+                                    <Button Style="{StaticResource CategoryButton}">추가 토핑</Button>
+                                </Border>
+                            </StackPanel>
+                        </Grid>
+                        <Grid Grid.Row="1">
+                            
+                        </Grid>
+                    </Grid>
+                </Grid>
+            </Border>
+        </Grid>
+        <Grid Grid.Column="1" Grid.RowSpan="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.2*" />
+                <RowDefinition Height="0.8*" />
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <Border 
+                            Margin="0 0 50 0"
+                            Background="#FFCC01" 
+                            Width="250" Height="100" 
+                            CornerRadius="25" 
+                            VerticalAlignment="Center" 
+                            HorizontalAlignment="Center">
+                            <Border.Effect>
+                                <DropShadowEffect BlurRadius="5" ShadowDepth="5" Color="#eeeeee" />
+                            </Border.Effect>
+                            <TextBlock
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Center"
+                                FontSize="50"
+                                FontWeight="Bold"
+                                FontFamily="TMONMONSORI"
+                                Foreground="White"
+                                Text="TODAY" />
+                        </Border>
+                        <Border Margin="20 0 0 0" Background="White" Width="500" Height="100" CornerRadius="25" VerticalAlignment="Center" HorizontalAlignment="Center">
+                            <Border.Effect>
+                                <DropShadowEffect BlurRadius="5" ShadowDepth="5" Color="#eeeeee" />
+                            </Border.Effect>
+                            <TextBlock
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Center"
+                                FontSize="50"
+                                FontWeight="Bold"
+                                FontFamily="TMONMONSORI"
+                                Foreground="#707070"
+                                Text="0 원" />
+                        </Border>
+                        <Button 
+                            Click="Home_Button_Click"
+                            Margin="50 0 0 0" 
+                            Content="{StaticResource Home}" 
+                            VerticalAlignment="Center" 
+                            HorizontalAlignment="Center" 
+                            Width="70" 
+                            Height="70" 
+                            Background="Transparent" />
+                    </StackPanel>
+                </Grid>
+            </Grid>
+        </Grid>
     </Grid>
 </UserControl>

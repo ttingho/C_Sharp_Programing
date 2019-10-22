@@ -198,11 +198,11 @@
 
                                     <Grid Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Left">
                                         <ListView
-                                        x:Name="lvSandwich"
-                                        ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                                        Width="390"
-                                        Height="240"
-                                        Style="{StaticResource lvTableStyle}">
+                                            x:Name="lvSandwich"
+                                            ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                            Width="390"
+                                            Height="240"
+                                            Style="{StaticResource lvTableStyle}">
                                             <ListView.ItemsPanel>
                                                 <ItemsPanelTemplate>
                                                     <WrapPanel Orientation="Vertical" />
