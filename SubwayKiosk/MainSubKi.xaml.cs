@@ -171,18 +171,22 @@ namespace SubwayKiosk
 
         private void Payment_Button_Click(object sender, RoutedEventArgs e)
         {
-            if (lvTable.SelectedItem != null)
-            {
-                var Table = (SubkiTable)lvTable.SelectedItem;
-                payment_ctrl.ctrlPaymentTable = Table.Clone();
+            var Table = (SubkiTable)lvTable.SelectedItem;
 
-                payment_ctrl.paymentTable = Table.Clone();
-                mainSubki_contents.Visibility = Visibility.Collapsed;
-                payment_ctrl.Visibility = Visibility.Visible;
+            if (Table == null)
+            {
+                MessageBox.Show("테이블을 선택해 주세요.");
+            }
+            else  if (Table.FoodList.Count == 0)
+            {
+                MessageBox.Show("테이블에 메뉴가 추가되지 않았습니다.");
             }
             else
             {
-                MessageBox.Show("테이블을 선택해 주세요.");
+                payment_ctrl.ctrlPaymentTable = Table.Clone();
+                payment_ctrl.paymentTable = Table.Clone();
+                mainSubki_contents.Visibility = Visibility.Collapsed;
+                payment_ctrl.Visibility = Visibility.Visible;
             }
         }
 
