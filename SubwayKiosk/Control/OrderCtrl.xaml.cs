@@ -92,8 +92,6 @@ namespace SubwayKiosk.Control
             ctrlOrderMenu = new SubkiTable();
             lvShoppingBasket.ItemsSource = new List<Food>();
             total_price.Text = "0 원";
-            lvCategory.Items.Refresh();
-            lvOrderMenu.Items.Refresh();
             lvShoppingBasket.Items.Refresh();
             if (OnOrderComplate != null)
             {
@@ -110,8 +108,6 @@ namespace SubwayKiosk.Control
             
             lvShoppingBasket.ItemsSource = new List<Food>();
             total_price.Text = "0 원";
-            lvCategory.Items.Refresh();
-            lvOrderMenu.Items.Refresh();
             lvShoppingBasket.Items.Refresh();
 
             if (OnOrderComplate != null)
