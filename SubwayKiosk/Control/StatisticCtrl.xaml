@@ -112,9 +112,9 @@
                                 </ListView.ItemsPanel>
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
-                                        <StackPanel Orientation="Horizontal">
+                                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                                             <TextBlock
-                                                Margin="10"
+                                                Margin="20 10 20 10"
                                                 Foreground="#666666"
                                                 HorizontalAlignment="Center"
                                                 VerticalAlignment="Center"
@@ -123,23 +123,27 @@
                                                 FontFamily="TMONMONSORI"
                                                 Text="{Binding KrName}"/>
                                             <TextBlock
-                                                Margin="10"
+                                                Margin="20 10 20 10"
                                                 Foreground="#666666"
                                                 HorizontalAlignment="Center"
                                                 VerticalAlignment="Center"
                                                 FontSize="25"
                                                 FontWeight="Bold"
                                                 FontFamily="TMONMONSORI"
-                                                Text="{Binding Count}"/>
+                                                Text="{Binding Count}">
+                                                개
+                                            </TextBlock>
                                             <TextBlock
-                                                Margin="10"
+                                                Margin="20 10 20 10"
                                                 Foreground="#666666"
                                                 HorizontalAlignment="Center"
                                                 VerticalAlignment="Center"
                                                 FontSize="25"
                                                 FontWeight="Bold"
                                                 FontFamily="TMONMONSORI"
-                                                Text="{Binding totalPrice}"/>
+                                                Text="{Binding totalPrice}">
+                                                원
+                                            </TextBlock>
                                         </StackPanel>
                                     </DataTemplate>
                                 </ListView.ItemTemplate>
@@ -168,6 +172,7 @@
                                 <DropShadowEffect BlurRadius="5" ShadowDepth="5" Color="#eeeeee" />
                             </Border.Effect>
                             <TextBlock
+                                TextAlignment="Center"
                                 VerticalAlignment="Center"
                                 HorizontalAlignment="Center"
                                 FontSize="50"
