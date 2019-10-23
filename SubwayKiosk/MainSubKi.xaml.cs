@@ -192,6 +192,7 @@ namespace SubwayKiosk
 
         private void Statistic_Button_Click(object sender, RoutedEventArgs e)
         {
+            statistic_ctrl.calcTodayTotalPrice();
             mainSubki_contents.Visibility = Visibility.Collapsed;
             statistic_ctrl.Visibility = Visibility.Visible;
         }

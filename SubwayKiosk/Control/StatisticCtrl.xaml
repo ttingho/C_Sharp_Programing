@@ -49,8 +49,8 @@
                     <Grid Grid.Row="1" Width="650" Height="890" Grid.RowSpan="3">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="0.1*" />
-                            <RowDefinition Height="0.1*" />
-                            <RowDefinition Height="0.8*" />
+                            <RowDefinition Height="0.2*" />
+                            <RowDefinition Height="0.7*" />
                         </Grid.RowDefinitions>
                         <Grid Grid.Row="0">
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
@@ -58,30 +58,92 @@
                                     <Border.Effect>
                                         <DropShadowEffect BlurRadius="2" ShadowDepth="2" Color="#EEEEEE" />
                                     </Border.Effect>
-                                    <Button Style="{StaticResource CategoryButton}">샌드위치</Button>
+                                    <Button Style="{StaticResource CategoryButton}" Click="ClickSandwich">샌드위치</Button>
                                 </Border>
                                 <Border Style="{StaticResource CategoryBorder}">
                                     <Border.Effect>
                                         <DropShadowEffect BlurRadius="2" ShadowDepth="2" Color="#EEEEEE" />
                                     </Border.Effect>
-                                    <Button Style="{StaticResource CategoryButton}">찹샐러드</Button>
+                                    <Button Style="{StaticResource CategoryButton}" Click="ClickChopSal">찹샐러드</Button>
                                 </Border>
                                 <Border Style="{StaticResource CategoryBorder}">
                                     <Border.Effect>
                                         <DropShadowEffect BlurRadius="2" ShadowDepth="2" Color="#EEEEEE" />
                                     </Border.Effect>
-                                    <Button Style="{StaticResource CategoryButton}">사이드, 음료</Button>
+                                    <Button Style="{StaticResource CategoryButton}" Click="ClickSideAndDrink">사이드, 음료</Button>
                                 </Border>
                                 <Border Style="{StaticResource CategoryBorder}">
                                     <Border.Effect>
                                         <DropShadowEffect BlurRadius="2" ShadowDepth="2" Color="#EEEEEE" />
                                     </Border.Effect>
-                                    <Button Style="{StaticResource CategoryButton}">추가 토핑</Button>
+                                    <Button Style="{StaticResource CategoryButton}" Click="ClickAddToping">추가 토핑</Button>
                                 </Border>
                             </StackPanel>
                         </Grid>
                         <Grid Grid.Row="1">
-                            
+                            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <TextBlock 
+                                    x:Name="tbCategoryTitle"
+                                    Margin="25"
+                                    Foreground="#666666"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    FontSize="50"
+                                    FontWeight="Bold"
+                                    FontFamily="TMONMONSORI"
+                                    Text="선택해주세요." />
+                                <Rectangle Width="600" Height="3" Fill="#009841" />
+                            </StackPanel>
+                        </Grid>
+                        <Grid Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center">
+                            <ListView
+                                x:Name="lvStatisticCategory"
+                                Width="620"
+                                Height="600"
+                                ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Center"
+                                Background="Transparent"
+                                BorderThickness="0">
+                                <ListView.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <WrapPanel Orientation="Vertical" />
+                                    </ItemsPanelTemplate>
+                                </ListView.ItemsPanel>
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock
+                                                Margin="10"
+                                                Foreground="#666666"
+                                                HorizontalAlignment="Center"
+                                                VerticalAlignment="Center"
+                                                FontSize="25"
+                                                FontWeight="Bold"
+                                                FontFamily="TMONMONSORI"
+                                                Text="{Binding KrName}"/>
+                                            <TextBlock
+                                                Margin="10"
+                                                Foreground="#666666"
+                                                HorizontalAlignment="Center"
+                                                VerticalAlignment="Center"
+                                                FontSize="25"
+                                                FontWeight="Bold"
+                                                FontFamily="TMONMONSORI"
+                                                Text="{Binding Count}"/>
+                                            <TextBlock
+                                                Margin="10"
+                                                Foreground="#666666"
+                                                HorizontalAlignment="Center"
+                                                VerticalAlignment="Center"
+                                                FontSize="25"
+                                                FontWeight="Bold"
+                                                FontFamily="TMONMONSORI"
+                                                Text="{Binding totalPrice}"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
                         </Grid>
                     </Grid>
                 </Grid>
@@ -119,6 +181,7 @@
                                 <DropShadowEffect BlurRadius="5" ShadowDepth="5" Color="#eeeeee" />
                             </Border.Effect>
                             <TextBlock
+                                x:Name="tbTodayTotalPrice"
                                 VerticalAlignment="Center"
                                 HorizontalAlignment="Center"
                                 FontSize="50"
@@ -135,7 +198,8 @@
                             HorizontalAlignment="Center" 
                             Width="70" 
                             Height="70" 
-                            Background="Transparent" />
+                            Background="Transparent"
+                            BorderThickness="0" />
                     </StackPanel>
                 </Grid>
             </Grid>

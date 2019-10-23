@@ -26,9 +26,21 @@ namespace SubwayKiosk.Model.changeCategoryType
             }
         }
 
-        public void ChangeString()
+        public string ChangeString(Category.eCategory eCategory)
         {
-
+            switch (eCategory)
+            {
+                case Category.eCategory.Sandwich:
+                    return "샌드위치";
+                case Category.eCategory.ChoppedSalads:
+                    return "찹샐러드";
+                case Category.eCategory.AdditionalToppings:
+                    return "추가 토핑";
+                case Category.eCategory.SideAndDrink:
+                    return "사이드, 음료";
+                default:
+                    return "empty";
+            }
         }
     }
 }

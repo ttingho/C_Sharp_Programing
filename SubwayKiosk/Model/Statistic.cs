@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,54 +13,55 @@ namespace SubKiLibrary
     {
         public List<SubkiTable> SaledFood = new List<SubkiTable>();
 
-        private IEnumerable<Food> TotalCatagori(ObservableCollection<Food> foodList, Category.eCategory category)
+        public List<Food> CategoryFoodList(Category.eCategory eCategory)
         {
-            throw new NotImplementedException();
-        }
+            List<Food> categoryFoods = new List<Food>();
 
-        private IEnumerable<Food> TotalName(ObservableCollection<Food> foodList, string name)
-        {
-            throw new NotImplementedException();
-        }
-
-        public int GetTotalSalesByDate(DateTime day)
-        {
-            DateTime nextDay = day.AddDays(1.0);
-            List<SubkiTable> DateTable = SaledFood.FindAll(x => (x.date > day && x.date < nextDay));
-
-            return DateTable.Sum(x => x.TotalPrice);
-        }
-
-        private List<Food> TotalCatagori(List<Food> foods, Category.eCategory category)
-        {
-            return foods.FindAll(x => x.Category == category);
-        }
-
-        private List<Food> TotalName(List<Food> foods, string name)
-        {
-            return foods.FindAll(x => x.EnName == name);
-        }
-
-        public int GetTotalSalesByCatagori(Category.eCategory category)
-        {
-            List<Food> AllFood = new List<Food>();
-
-            foreach(SubkiTable item in SaledFood)
+            foreach (SubkiTable table in SaledFood)
             {
-                AllFood.AddRange(TotalCatagori(item.FoodList, category));
+                foreach(Food food in table.FoodList)
+                {
+                    if (food.Category == eCategory)
+                    {
+                        if(categoryFoods.Where(x=> x.KrName.Equals(food.KrName)).FirstOrDefault() == null)
+                        {
+                            food.totalPrice = food.Count * food.Price;
+                            categoryFoods.Add(food.Clone());
+                        }
+                        else
+                        {
+                            var item = categoryFoods.Where(x => x.KrName.Equals(food.KrName)).FirstOrDefault();
+                            item.Count += food.Count;
+
+                            item.totalPrice = item.Count * food.Price;
+                        }
+                    }
+                }
             }
-            return AllFood.Sum(x => x.Price * x.Count);
+
+            return categoryFoods;
         }
 
-        public int GetTotalSalesByName(string name)
+        public int ToDayTotalPrice()
         {
-            List<Food> AllFood = new List<Food>();
-
-            foreach (SubkiTable item in SaledFood)
+            if(SaledFood.Count == 0)
             {
-                AllFood.AddRange(TotalName(item.FoodList, name));
+                return 0;
             }
-            return AllFood.Sum(x => x.Price * x.Count);
+            else
+            {
+                int totalPrice = 0;
+                String today = String.Format("yyyy.MM.dd", DateTime.Today); 
+                foreach(SubkiTable table in SaledFood)
+                {
+                    String tableDate = String.Format("yyyy.MM.dd", table.date);
+                    if(tableDate == today)
+                    {
+                        totalPrice += table.TotalPrice;
+                    }
+                }
+                return totalPrice;
+            }
         }
     }
 }

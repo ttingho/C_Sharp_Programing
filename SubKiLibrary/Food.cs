@@ -33,7 +33,7 @@ namespace SubKiLibrary
         }
         public string ImagePath { get; set; }
         public eCategory Category { get; set; }
-
+        public int totalPrice { get; set; }
         public Food Clone()
         {
             Food retval = new Food();
@@ -45,6 +45,7 @@ namespace SubKiLibrary
             retval.KrName = KrName;
             retval.Price = Price;
             retval.Category = Category;
+            retval.totalPrice = totalPrice;
             return retval;
         }
 
