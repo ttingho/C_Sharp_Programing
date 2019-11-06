@@ -6,18 +6,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SubKiLibrary;
+using SubwayKiosk.Model.changeCategoryType;
 
 namespace SubKiLibrary
 {
     public class Statistic
     {
         public List<SubkiTable> SaledFood = new List<SubkiTable>();
-
+        private CategoryType categoryType = new CategoryType();
         public List<Food> CategoryFoodList(Category.eCategory eCategory)
         {
             List<Food> categoryFoods = new List<Food>();
 
-            foreach (SubkiTable table in SaledFood)
+            foreach(SubkiTable table in SaledFood)
             {
                 foreach(Food food in table.FoodList)
                 {
@@ -40,6 +41,28 @@ namespace SubKiLibrary
             }
 
             return categoryFoods;
+        }
+
+        public List<Category> GetCategories(List<Category> categories)
+        {
+            foreach (Category category in categories)
+            {
+                int tPrice = 0;
+                foreach (SubkiTable table in SaledFood)
+                {
+                    foreach (Food food in table.FoodList)
+                    {
+                        var type = categoryType.ChangeEnum(category.CategoryName);
+                        if (type == food.Category)
+                        {
+                            category.totalCount += food.Count;
+                            tPrice += (food.Count * food.Price);
+                        }
+                    }
+                }
+                category.totalPrice = tPrice;
+            }
+            return categories;
         }
 
         public int ToDayTotalPrice()

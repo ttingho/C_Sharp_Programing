@@ -28,7 +28,7 @@ namespace SubwayKiosk.Control
     {
         public delegate void StatisticComplateHandler(object sender, StatisticArgs args);
         public event StatisticComplateHandler OnStatisticComplate;
-        private List<Food> categoryFoodList = new List<Food>();
+        private List<Category> categories = new List<Category>();
 
         public StatisticCtrl()
         {
@@ -38,8 +38,13 @@ namespace SubwayKiosk.Control
         private void Home_Button_Click(object sender, RoutedEventArgs e)
         {
             tbCategoryTitle.Text = "선택해주세요.";
+
             lvStatisticCategory.ItemsSource = new List<Food>();
+            lvStatisticMenu.ItemsSource = new List<Category>();
+            
             lvStatisticCategory.Items.Refresh();
+            lvStatisticMenu.Items.Refresh();
+            
             StatisticArgs args = new StatisticArgs();
 
             if (OnStatisticComplate != null)
@@ -52,6 +57,14 @@ namespace SubwayKiosk.Control
         {
             string total = App.statistic.ToDayTotalPrice() + " 원";
             tbTodayTotalPrice.Text = total;
+        }
+
+        public void calcStatisticMenu()
+        {
+            List<Category> statisticMenu = App.categoryData.SubkiCategorys;
+            statisticMenu = App.statistic.GetCategories(statisticMenu);
+            lvStatisticMenu.ItemsSource = statisticMenu;
+            lvStatisticMenu.Items.Refresh();
         }
 
         private void ClickSandwich(object sender, RoutedEventArgs e)
@@ -78,9 +91,13 @@ namespace SubwayKiosk.Control
         {
             CategoryType categoryType = new CategoryType();
             List<Food> foods = new List<Food>();
+            
             tbCategoryTitle.Text = categoryType.ChangeString(eCategory);
+            
             foods = App.statistic.CategoryFoodList(eCategory);
+            
             lvStatisticCategory.ItemsSource = foods;
+
             lvStatisticCategory.Items.Refresh();
         }
     }

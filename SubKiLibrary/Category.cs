@@ -9,6 +9,8 @@ namespace SubKiLibrary
     public class Category
     {
         public string CategoryName { get; set; }
+        public int totalCount { get; set; }
+        public int totalPrice { get; set; }
         public enum eCategory
         {
             Sandwich,

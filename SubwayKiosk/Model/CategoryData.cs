@@ -20,10 +20,10 @@ namespace SubwayKiosk.Model
 
             SubkiCategorys = new List<Category>()
             {
-                new Category() { CategoryName = "샌드위치" },
-                new Category() { CategoryName = "찹샐러드" },
-                new Category() { CategoryName = "추가 토핑" },
-                new Category() { CategoryName = "사이드, 음료" },
+                new Category() { CategoryName = "샌드위치", totalCount = 0, totalPrice = 0 },
+                new Category() { CategoryName = "찹샐러드", totalCount = 0, totalPrice = 0 },
+                new Category() { CategoryName = "추가 토핑", totalCount = 0, totalPrice = 0 },
+                new Category() { CategoryName = "사이드, 음료", totalCount = 0, totalPrice = 0 },
             };
 
             isLoaded = true;

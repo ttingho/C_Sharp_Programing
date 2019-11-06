@@ -208,6 +208,85 @@
                     </StackPanel>
                 </Grid>
             </Grid>
+            <Grid Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Center">
+                <Border Width="950" Height="750" Background="White">
+                    <Border.Effect>
+                        <DropShadowEffect BlurRadius="5" ShadowDepth="5" Color="#EEEEEE" />
+                    </Border.Effect>
+                    <Grid Grid.RowSpan="2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="0.02*" />
+                            <RowDefinition Height="0.98*" />
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="0" VerticalAlignment="Top" HorizontalAlignment="Center">
+                            <Rectangle Fill="#FFE57F" Width="950" Height="10" />
+                        </Grid>
+                        <Grid Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center">
+                            <ListView
+                                x:Name="lvStatisticMenu"
+                                Width="950"
+                                Height="740"
+                                ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Center"
+                                Background="Transparent"
+                                BorderThickness="0">
+                                <ListView.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <WrapPanel Orientation="Vertical" />
+                                    </ItemsPanelTemplate>
+                                </ListView.ItemsPanel>
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Width="950" Height="180" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                            <StackPanel Width="950" Height="178" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">
+                                                <TextBlock
+                                                    TextAlignment="Center"
+                                                    Width="316"
+                                                    Padding="20 10 20 10"
+                                                    Foreground="#666666"
+                                                    HorizontalAlignment="Center"
+                                                    VerticalAlignment="Center"
+                                                    FontSize="30"
+                                                    FontWeight="Bold"
+                                                    FontFamily="TMONMONSORI"
+                                                    Text="{Binding CategoryName}"/>
+                                                <TextBlock
+                                                    TextAlignment="Center"
+                                                    Width="316"
+                                                    Padding="20 10 20 10"
+                                                    Foreground="#666666"
+                                                    HorizontalAlignment="Center"
+                                                    VerticalAlignment="Center"
+                                                    FontSize="30"
+                                                    FontWeight="Bold"
+                                                    FontFamily="TMONMONSORI"
+                                                    Text="{Binding totalCount}">
+                                                    개
+                                                </TextBlock>
+                                                <TextBlock
+                                                    TextAlignment="Center"
+                                                    Width="316"
+                                                    Padding="20 10 20 10"
+                                                    Foreground="#666666"
+                                                    HorizontalAlignment="Center"
+                                                    VerticalAlignment="Center"
+                                                    FontSize="30"
+                                                    FontWeight="Bold"
+                                                    FontFamily="TMONMONSORI"
+                                                    Text="{Binding totalPrice}">
+                                                    원
+                                                </TextBlock>
+                                            </StackPanel>
+                                            <Rectangle Fill="#FFE57F" Width="950" Height="2" />
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </Grid>
+                    </Grid>
+                </Border>
+            </Grid>
         </Grid>
     </Grid>
 </UserControl>
