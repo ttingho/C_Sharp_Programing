@@ -64,7 +64,7 @@ namespace SubwayKiosk.Model
                 new Food(){ KrName = "웨지 포테이토", EnName = "Ovenbaked Wedge Potatoes", ImagePath = @"\Assets\SUBWAY_Side\subway_001.jpg", Category = Category.eCategory.SideAndDrink, Price = 2500 },
                 new Food(){ KrName = "치즈 웨지 포테이토", EnName = "Cheesy Wedge Potatoes", ImagePath = @"\Assets\SUBWAY_Side\subway_002.jpg", Category = Category.eCategory.SideAndDrink, Price = 2500 },
                 new Food(){ KrName = "베이컨 치즈 웨지 포테이토", EnName = "Bacon Cheesy Wedge Potatoes", ImagePath = @"\Assets\SUBWAY_Side\subway_003.jpg", Category = Category.eCategory.SideAndDrink, Price = 3000},
-                new Food(){ KrName = "브로콜리 체타 수프", EnName = "Broccoli Cheddar Soup", ImagePath = @"\Assets\SUBWAY_Side\subway_004.jpg", Category = Category.eCategory.SideAndDrink, Price = 3500 },
+                new Food(){ KrName = "브로콜리 체다 수프", EnName = "Broccoli Cheddar Soup", ImagePath = @"\Assets\SUBWAY_Side\subway_004.jpg", Category = Category.eCategory.SideAndDrink, Price = 3500 },
                 new Food(){ KrName = "베이크 포테이토 수프", EnName = "Baked Potato Soup", ImagePath = @"\Assets\SUBWAY_Side\subway_005.jpg", Category = Category.eCategory.SideAndDrink, Price = 3500 },
                 new Food(){ KrName = "더블 초코칩 쿠키", EnName = "Double Chocolate Chip", ImagePath = @"\Assets\SUBWAY_Side\subway_006.jpg", Category = Category.eCategory.SideAndDrink, Price = 3500 },
                 new Food(){ KrName = "초코칩 쿠키", EnName = "Chocolate Chip", ImagePath = @"\Assets\SUBWAY_Side\subway_007.jpg", Category = Category.eCategory.SideAndDrink, Price = 2400 },
