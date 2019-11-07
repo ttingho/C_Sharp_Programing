@@ -53,7 +53,12 @@ namespace SubKiLibrary
                     foreach (Food food in table.FoodList)
                     {
                         var type = categoryType.ChangeEnum(category.CategoryName);
-                        if (type == food.Category)
+                        if (type == Category.eCategory.AllMenu)
+                        {
+                            category.totalCount += food.Count;
+                            tPrice += (food.Count * food.Price);
+                        }
+                        else if (type == food.Category)
                         {
                             category.totalCount += food.Count;
                             tPrice += (food.Count * food.Price);
