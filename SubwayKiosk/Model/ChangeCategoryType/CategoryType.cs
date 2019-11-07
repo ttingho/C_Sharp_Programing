@@ -21,6 +21,8 @@ namespace SubwayKiosk.Model.changeCategoryType
                     return Category.eCategory.AdditionalToppings;
                 case "사이드, 음료":
                     return Category.eCategory.SideAndDrink;
+                case "ALL Menu":
+                    return Category.eCategory.AllMenu;
                 default:
                     return Category.eCategory.empty;
             }
@@ -38,6 +40,8 @@ namespace SubwayKiosk.Model.changeCategoryType
                     return "추가 토핑";
                 case Category.eCategory.SideAndDrink:
                     return "사이드, 음료";
+                case Category.eCategory.AllMenu:
+                    return "ALL Menu";
                 default:
                     return "empty";
             }

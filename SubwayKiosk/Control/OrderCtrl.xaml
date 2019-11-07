@@ -290,10 +290,11 @@
                         </ListView>
                     </Grid>
                 </Grid>
-                <Grid Grid.Column="1" Grid.ColumnSpan="2">
+                <Grid Grid.Column="1" Grid.RowSpan="3">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="0.2*" />
-                        <RowDefinition Height="0.8*" />
+                        <RowDefinition Height="0.4*" />
+                        <RowDefinition Height="0.4*" />
                     </Grid.RowDefinitions>
                     <Grid Grid.Row="0">
                         <TextBlock
@@ -311,6 +312,27 @@
                             FontFamily="TMONMONSORI"
                             Text="0 원">
                         </TextBlock>
+                    </Grid>
+                    <Grid Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Left">
+                        <Border
+                            Padding="2"
+                            CornerRadius="10"
+                            Width="200"
+                            Height="50"
+                            Background="#FFCC01"
+                            Margin="15 0 0 0">
+                            <Border.Effect>
+                                <DropShadowEffect ShadowDepth="2" Color="#C7C7C7" BlurRadius="10" />
+                            </Border.Effect>
+                            <Button 
+                                FontFamily="TMONMONSORI"
+                                Foreground="White"
+                                FontSize="20"
+                                Background="Transparent"
+                                BorderThickness="0"
+                                Content="주문 전체 취소"
+                                Click="Click_AllMenu_Cancel"></Button>
+                        </Border>
                     </Grid>
                 </Grid>
             </Grid>

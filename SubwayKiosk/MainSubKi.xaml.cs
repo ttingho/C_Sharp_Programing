@@ -159,6 +159,7 @@ namespace SubwayKiosk
 
                 order_ctrl.lvShoppingBasket.ItemsSource = order_ctrl.ctrlOrderMenu.FoodList;
                 order_ctrl.OrderMenu = Table.Clone();
+                order_ctrl.total_price.Text = Table.TotalPrice + " 원";
                 order_ctrl.lvShoppingBasket.Items.Refresh();
                 mainSubki_contents.Visibility = Visibility.Collapsed;
                 order_ctrl.Visibility = Visibility.Visible;

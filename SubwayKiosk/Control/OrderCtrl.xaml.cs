@@ -68,11 +68,19 @@ namespace SubwayKiosk.Control
         private void updateOrderMenu(Category category)
         {
             lstOrderFoods = new List<Food>();
-            foreach(Food food in App.foodData.lstMenu)
+            Category.eCategory eCategory = categoryType.ChangeEnum(category.CategoryName);
+            if (eCategory == Category.eCategory.AllMenu)
             {
-                if (categoryCheck(food, category))
+                lstOrderFoods = App.foodData.lstMenu;
+            }
+            else
+            {
+                foreach (Food food in App.foodData.lstMenu)
                 {
-                    lstOrderFoods.Add(food.Clone());
+                    if (categoryCheck(food, category))
+                    {
+                        lstOrderFoods.Add(food.Clone());
+                    }
                 }
             }
             lvOrderMenu.ItemsSource = lstOrderFoods;
@@ -161,6 +169,14 @@ namespace SubwayKiosk.Control
             {
                 total_price.Text = ctrlOrderMenu.TotalPrice + " 원";
             }
+            lvShoppingBasket.ItemsSource = ctrlOrderMenu.FoodList;
+            lvShoppingBasket.Items.Refresh();
+        }
+
+        private void Click_AllMenu_Cancel(object sender, RoutedEventArgs e)
+        {
+            total_price.Text = "0 원";
+            ctrlOrderMenu.FoodList.Clear();
             lvShoppingBasket.ItemsSource = ctrlOrderMenu.FoodList;
             lvShoppingBasket.Items.Refresh();
         }

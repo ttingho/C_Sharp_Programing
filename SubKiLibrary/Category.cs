@@ -17,6 +17,7 @@ namespace SubKiLibrary
             ChoppedSalads,
             AdditionalToppings,
             SideAndDrink,
+            AllMenu,
             empty
         }
     }
