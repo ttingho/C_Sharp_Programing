@@ -171,15 +171,19 @@
                             <Border.Effect>
                                 <DropShadowEffect BlurRadius="5" ShadowDepth="5" Color="#eeeeee" />
                             </Border.Effect>
-                            <TextBlock
-                                TextAlignment="Center"
+                            <Button
+                                Width="230"
+                                Height="80"
                                 VerticalAlignment="Center"
                                 HorizontalAlignment="Center"
                                 FontSize="50"
                                 FontWeight="Bold"
                                 FontFamily="TMONMONSORI"
-                                Foreground="White"
-                                Text="TODAY" />
+                                Background="Transparent"
+                                BorderThickness="0"
+                                Foreground="White">
+                                TODAY
+                            </Button>
                         </Border>
                         <Border Margin="20 0 0 0" Background="White" Width="500" Height="100" CornerRadius="25" VerticalAlignment="Center" HorizontalAlignment="Center">
                             <Border.Effect>
