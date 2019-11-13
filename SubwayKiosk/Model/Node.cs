@@ -10,6 +10,9 @@ namespace SubwayKiosk.Model
 {
     public class Node
     {
+        private static String ip = "10.80.163.138";
+        private static int port = 80;
+
         private Thread client = null;
 
         private Socket socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
@@ -35,6 +38,7 @@ namespace SubwayKiosk.Model
                 login();
                 Success();
                 StartTimer();
+
                 while(true)
                 {
                     if(this.msg != null)
@@ -52,12 +56,14 @@ namespace SubwayKiosk.Model
             catch(Exception e)
             {
                 EndTimer();
+                this.socket.Close();
                 isConnected = false;
-                Console.WriteLine("No");
+                this.strError = string.Format("[SYSTEM] : {0}", e.Message);
+                this.Connect();
             }
         }
 
-        public void Connect(String ip, int port)
+        public void Connect()
         {
             try
             {
@@ -68,7 +74,9 @@ namespace SubwayKiosk.Model
                 this.strError = string.Format("[SYSTEM] : {0}", e.Message);
                 return;
             }
+
             this.isConnected = true;
+
             client = new Thread(new ThreadStart(run));
             client.IsBackground = true;
             client.Start();
@@ -134,6 +142,10 @@ namespace SubwayKiosk.Model
             this.allmsg = msg;
         }
 
+        public void setID(int id)
+        {
+            this.id = "@" + id.ToString();
+        }
         
     }
 }
