@@ -71,6 +71,7 @@
     </Compile>
     <Compile Include="Model\CategoryData.cs" />
     <Compile Include="Model\ChangeCategoryType\CategoryType.cs" />
+    <Compile Include="Model\Node.cs" />
     <Compile Include="Model\Statistic.cs" />
     <Compile Include="Model\TableData.cs" />
     <Compile Include="Model\FoodData.cs" />

@@ -62,6 +62,15 @@ namespace SubwayKiosk
             }
         }
 
+        /*
+        private void test()
+        {
+            Model.Node node = new Model.Node();
+            node.Connect("10.80.163.138", 80);
+            node.setMessage("Hello");
+        }
+        */
+
         private void PaymentCtrl_OnPaymentComplate(object sender, PaymentArgs args)
         {
             mainSubki_contents.Visibility = Visibility.Visible;
