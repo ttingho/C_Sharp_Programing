@@ -14,6 +14,8 @@ namespace SubKiLibrary
     {
         public List<SubkiTable> SaledFood = new List<SubkiTable>();
         private CategoryType categoryType = new CategoryType();
+
+        // 카테고리의 메뉴별 통계
         public List<Food> CategoryFoodList(Category.eCategory eCategory)
         {
             List<Food> categoryFoods = new List<Food>();
@@ -43,6 +45,7 @@ namespace SubKiLibrary
             return categoryFoods;
         }
 
+        // 카테고리별 통계
         public List<Category> GetCategories(List<Category> categories)
         {
             foreach (Category category in categories)

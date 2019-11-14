@@ -9,15 +9,9 @@ namespace SubwayKiosk.Model
 {
     public class CategoryData
     {
-        public bool isLoaded = false;
         public List<Category> SubkiCategorys { get; set; }
         public void Load()
         {
-            if (isLoaded)
-            {
-                return;
-            }
-
             SubkiCategorys = new List<Category>()
             {
                 new Category() { CategoryName = "ALL Menu", totalCount = 0, totalPrice = 0 },
@@ -26,8 +20,6 @@ namespace SubwayKiosk.Model
                 new Category() { CategoryName = "추가 토핑", totalCount = 0, totalPrice = 0 },
                 new Category() { CategoryName = "사이드, 음료", totalCount = 0, totalPrice = 0 },
             };
-
-            isLoaded = true;
         }
     }
 }

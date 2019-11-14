@@ -202,6 +202,7 @@ namespace SubwayKiosk
 
         private void Statistic_Button_Click(object sender, RoutedEventArgs e)
         {
+            App.categoryData.Load();
             statistic_ctrl.calcTodayTotalPrice();
             statistic_ctrl.calcStatisticMenu();
             mainSubki_contents.Visibility = Visibility.Collapsed;
