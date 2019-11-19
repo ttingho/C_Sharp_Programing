@@ -99,7 +99,7 @@ namespace SubwayKiosk.Control
             ctrlPaymentTable.Payment = payment;
             ctrlPaymentTable.isPayed = true;
 
-            if (App.loginType)
+            if (App.loginType && App.node.isConnected)
             {
                 string tableTotalPriceMsg = "SUBWAY " + ctrlPaymentTable.Idx + "번 테이블 결제 금액 : " + ctrlPaymentTable.TotalPrice;
 

@@ -405,13 +405,28 @@
             <localControl:StatisticCtrl x:Name="statistic_ctrl" Visibility="Collapsed"></localControl:StatisticCtrl>
         </Grid>
         <Grid Grid.Row="2" Background="#FFCC01" Grid.ColumnSpan="3">
-            <TextBlock 
-                x:Name="dClock"
-                FontSize="25"
-                Foreground="#C7C7C7"
-                Margin="0 -35 10 0"
-                HorizontalAlignment="Right"
-                FontWeight="Bold" />
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right">
+                <TextBlock
+                    x:Name="firstConnectTime"
+                    FontSize="15"
+                    Foreground="#C7C7C7"
+                    Margin="0 -35 10 0"
+                    FontWeight="Bold"
+                    Text="최근 로그인 시간 : MM/dd/yy HH:mm:ss"/>
+                <TextBlock
+                    x:Name="lastdisConnectTime"
+                    FontSize="15"
+                    Foreground="#C7C7C7"
+                    Margin="0 -35 10 0"
+                    FontWeight="Bold"
+                    Text="최종 접속 시간 : MM/dd/yy HH:mm:ss"/>
+                <TextBlock 
+                    x:Name="dClock"
+                    FontSize="20"
+                    Foreground="#878585"
+                    Margin="0 -35 10 0"
+                    FontWeight="Bold" />
+            </StackPanel>
         </Grid>
         <localControl:LoadingCtrl x:Name="loading_ctrl" Grid.RowSpan="3" Grid.ColumnSpan="3"/>
     </Grid>

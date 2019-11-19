@@ -104,7 +104,7 @@ namespace SubwayKiosk.Control
 
         private void handleDailyTurnover(object sender, RoutedEventArgs e)
         {
-            if (App.loginType)
+            if (App.loginType && App.node.isConnected)
             {
                 string sendTodayTotalMsg = "SUBWAY 하루 매출액 : " + todayTotalPrice;
                 App.node.setMessageAll(sendTodayTotalMsg);

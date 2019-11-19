@@ -26,8 +26,8 @@ namespace SubwayKiosk.Model
 
         public String id = "@2209";
 
-        private String startTime = null;
-        private String endTime = null;
+        public String startTime = null;
+        public String endTime = null;
 
         public String strError = null;
         private bool logout = false;
@@ -42,7 +42,12 @@ namespace SubwayKiosk.Model
 
                 while(true)
                 {
-                    if (this.logout){ return; }
+                    if (this.logout){
+                        this.logout = false;
+                        socket.Shutdown(SocketShutdown.Both);
+                        socket.Close();
+                        return;
+                    }
                     if(this.msg != null)
                     {
                         Send();
@@ -69,6 +74,7 @@ namespace SubwayKiosk.Model
         {
             try
             {
+                this.socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
                 this.socket.Connect(ip, port);
             }
             catch (Exception e)

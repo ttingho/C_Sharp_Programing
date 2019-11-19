@@ -40,6 +40,10 @@ namespace SubwayKiosk
 
         private void LoginCtrl_OnLoginComplate(object sender, LoginArgs args)
         {
+            DateTime dateTime = DateTime.Now;
+
+            firstConnectTime.Text = "최근 로그인 시간 : " + dateTime.ToString("MM/dd/yy HH:mm:ss");
+
             mainSubki_contents.Visibility = Visibility.Visible;
             login_ctrl.Visibility = Visibility.Collapsed;
 
@@ -71,15 +75,6 @@ namespace SubwayKiosk
             }
         }
 
-        /*
-        private void test()
-        {
-            Model.Node node = new Model.Node();
-            node.Connect("10.80.163.138", 80);
-            node.setMessage("Hello");
-        }
-        */
-
         private void PaymentCtrl_OnPaymentComplate(object sender, PaymentArgs args)
         {
             mainSubki_contents.Visibility = Visibility.Visible;
@@ -101,7 +96,7 @@ namespace SubwayKiosk
 
         private void Timer_Tick(object sender, EventArgs e)
         {
-            dClock.Text = DateTime.Now.ToString();
+            dClock.Text = "현재 시간 : " + DateTime.Now.ToString();
         }
 
         private void MainSubKi_Loaded(object sender, RoutedEventArgs e)
@@ -178,6 +173,7 @@ namespace SubwayKiosk
                 order_ctrl.lvShoppingBasket.ItemsSource = order_ctrl.ctrlOrderMenu.FoodList;
                 order_ctrl.OrderMenu = Table.Clone();
                 order_ctrl.total_price.Text = Table.TotalPrice + " 원";
+                order_ctrl.tableTB.Text = Table.Idx + "번 테이블";
                 order_ctrl.lvShoppingBasket.Items.Refresh();
                 mainSubki_contents.Visibility = Visibility.Collapsed;
                 order_ctrl.Visibility = Visibility.Visible;
@@ -222,15 +218,13 @@ namespace SubwayKiosk
         {
             App.loginType = false;
 
-            if(App.node.isConnected)
-            {
-                App.node.disconnected();
-            }
+            App.node.disconnected();
 
-            if(!App.node.isConnected)
-            {
-                MessageBox.Show("로그아웃!");
-            }
+            DateTime dateTime = DateTime.Now;
+
+            lastdisConnectTime.Text = "최종 접속 시간 : " + dateTime.ToString("MM/dd/yy HH:mm:ss");
+
+            MessageBox.Show("로그아웃!");
 
             mainSubki_contents.Visibility = Visibility.Collapsed;
             login_ctrl.Visibility = Visibility.Visible;

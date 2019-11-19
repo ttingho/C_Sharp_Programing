@@ -68,54 +68,62 @@
                 </Grid>
                 <Grid Grid.Row="1">
                     <Grid VerticalAlignment="Top" HorizontalAlignment="Left">
-                        <ListView
-                            x:Name="lvCategory"
-                            ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                            SelectionChanged="LvCategory_SelectionChanged"
-                            Style="{StaticResource lvCategory}">
-                            <ListView.ItemsPanel>
-                                <ItemsPanelTemplate>
-                                    <WrapPanel Orientation="Vertical" />
-                                </ItemsPanelTemplate>
-                            </ListView.ItemsPanel>
-                            <ListView.Resources>
-                                <Style TargetType="{x:Type ListViewItem}">
-                                    <Setter Property="Template">
-                                        <Setter.Value>
-                                            <ControlTemplate TargetType="{x:Type ListViewItem}">
-                                                <Grid>
-                                                    <Rectangle
-                                                    x:Name="Ra"
-                                                    HorizontalAlignment="Left"
-                                                    Fill="#C7C7C7"
-                                                    Margin="30 25 0 70"
-                                                    Width="320"
-                                                    Height="10">
-                                                    </Rectangle>
-                                                    <StackPanel Margin="5 -100 0 0" VerticalAlignment="Center" HorizontalAlignment="Left">
-                                                        <TextBlock Style="{StaticResource CategoryTitle}" Text="{Binding CategoryName}"></TextBlock>
-                                                    </StackPanel>
-                                                </Grid>
-                                                <ControlTemplate.Triggers>
-                                                    <Trigger Property="IsEnabled" Value="false">
-                                                        <Setter TargetName="Ra" Property="Fill" Value="#C7C7C7" />
-                                                    </Trigger>
-                                                    <Trigger Property="IsEnabled" Value="true">
-                                                        <Setter TargetName="Ra" Property="Fill" Value="#C7C7C7" />
-                                                    </Trigger>
-                                                    <Trigger Property="IsMouseOver" Value="true">
-                                                        <Setter TargetName="Ra" Property="Fill" Value="#009841"/>
-                                                    </Trigger>
-                                                    <Trigger Property="IsSelected" Value="true">
-                                                        <Setter TargetName="Ra" Property="Fill" Value="#FFCC01"/>
-                                                    </Trigger>
-                                                </ControlTemplate.Triggers>
-                                            </ControlTemplate>
-                                        </Setter.Value>
-                                    </Setter>
-                                </Style>
-                            </ListView.Resources>
-                        </ListView>
+                        <StackPanel>
+                            <ListView
+                                x:Name="lvCategory"
+                                ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                SelectionChanged="LvCategory_SelectionChanged"
+                                Style="{StaticResource lvCategory}">
+                                <ListView.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <WrapPanel Orientation="Vertical" />
+                                    </ItemsPanelTemplate>
+                                </ListView.ItemsPanel>
+                                <ListView.Resources>
+                                    <Style TargetType="{x:Type ListViewItem}">
+                                        <Setter Property="Template">
+                                            <Setter.Value>
+                                                <ControlTemplate TargetType="{x:Type ListViewItem}">
+                                                    <Grid>
+                                                        <Rectangle
+                                                            x:Name="Ra"
+                                                            HorizontalAlignment="Left"
+                                                            Fill="#C7C7C7"
+                                                            Margin="30 25 0 70"
+                                                            Width="320"
+                                                            Height="10">
+                                                        </Rectangle>
+                                                        <StackPanel Margin="5 -100 0 0" VerticalAlignment="Center" HorizontalAlignment="Left">
+                                                            <TextBlock Style="{StaticResource CategoryTitle}" Text="{Binding CategoryName}"></TextBlock>
+                                                        </StackPanel>
+                                                    </Grid>
+                                                    <ControlTemplate.Triggers>
+                                                        <Trigger Property="IsEnabled" Value="false">
+                                                            <Setter TargetName="Ra" Property="Fill" Value="#C7C7C7" />
+                                                        </Trigger>
+                                                        <Trigger Property="IsEnabled" Value="true">
+                                                            <Setter TargetName="Ra" Property="Fill" Value="#C7C7C7" />
+                                                        </Trigger>
+                                                        <Trigger Property="IsMouseOver" Value="true">
+                                                            <Setter TargetName="Ra" Property="Fill" Value="#009841"/>
+                                                        </Trigger>
+                                                        <Trigger Property="IsSelected" Value="true">
+                                                            <Setter TargetName="Ra" Property="Fill" Value="#FFCC01"/>
+                                                        </Trigger>
+                                                    </ControlTemplate.Triggers>
+                                                </ControlTemplate>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Style>
+                                </ListView.Resources>
+                            </ListView>
+                            <TextBlock 
+                                x:Name="tableTB"
+                                FontFamily="TMONMONSORI"
+                                FontSize="30"
+                                FontWeight="Bold"
+                                Margin="30 0 0 0" />
+                        </StackPanel>
                     </Grid>
                 </Grid>
             </Grid>
