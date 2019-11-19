@@ -19,5 +19,7 @@ namespace SubwayKiosk
         public static TableData tableData = new TableData();
         public static CategoryData categoryData = new CategoryData();
         public static Statistic statistic = new Statistic();
+        public static Node node = new Node();
+        public static bool loginType = false;
     }
 }

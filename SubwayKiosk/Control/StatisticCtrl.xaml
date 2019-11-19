@@ -181,7 +181,8 @@
                                 FontFamily="TMONMONSORI"
                                 Background="Transparent"
                                 BorderThickness="0"
-                                Foreground="White">
+                                Foreground="White"
+                                Click="handleDailyTurnover">
                                 TODAY
                             </Button>
                         </Border>

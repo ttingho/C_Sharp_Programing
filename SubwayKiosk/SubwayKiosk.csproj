@@ -60,6 +60,9 @@
     <Compile Include="Control\LoadingCtrl.xaml.cs">
       <DependentUpon>LoadingCtrl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Control\LoginCtrl.xaml.cs">
+      <DependentUpon>LoginCtrl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Control\OrderCtrl.xaml.cs">
       <DependentUpon>OrderCtrl.xaml</DependentUpon>
     </Compile>
@@ -76,6 +79,10 @@
     <Compile Include="Model\TableData.cs" />
     <Compile Include="Model\FoodData.cs" />
     <Page Include="Control\LoadingCtrl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Control\LoginCtrl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -209,9 +216,7 @@
       <Name>SubKiLibrary</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Common\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="Assets\SUBWAY LOGO jpeg.png" />
   </ItemGroup>

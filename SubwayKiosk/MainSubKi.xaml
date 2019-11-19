@@ -63,7 +63,7 @@
             <RowDefinition Height="0.1*" />
         </Grid.RowDefinitions>
         <Grid Grid.Row="0" Background="#009841" />
-        <Grid x:Name="mainSubki_contents" Grid.Row="1">
+        <Grid x:Name="mainSubki_contents" Grid.Row="1" Visibility="Collapsed">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="4.5*" />
                 <ColumnDefinition Width="1.0*" />
@@ -75,7 +75,22 @@
                     <RowDefinition Height="0.8*" />
                 </Grid.RowDefinitions>
                 <Grid Grid.Row="0">
-                    <Image Source="Assets/SUBWAY LOGO jpeg.png" Width="350" Height="250" />
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                        <Border
+                            Style="{StaticResource ButtonBorder}"
+                            Background="#009841"
+                            Margin="20 -100 120 0"
+                            Width="120"
+                            Height="50"
+                            Padding="5"
+                            CornerRadius="10">
+                            <Border.Effect>
+                                <DropShadowEffect ShadowDepth="2" Color="#C7C7C7" BlurRadius="10" />
+                            </Border.Effect>
+                            <Button Width="110" Height="50" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" Style="{StaticResource Button}" Content="로그아웃" Click="handleLogout"></Button>
+                        </Border>
+                        <Image Source="Assets/SUBWAY LOGO jpeg.png" Width="350" Height="250" />
+                    </StackPanel>
                 </Grid>
                 <Grid Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center">
                     <ListView
@@ -384,6 +399,7 @@
             </Grid>
         </Grid>
         <Grid Grid.Row="1">
+            <localControl:LoginCtrl x:Name="login_ctrl" Visibility="Visible"></localControl:LoginCtrl>
             <localControl:OrderCtrl x:Name="order_ctrl" Visibility="Collapsed"></localControl:OrderCtrl>
             <localControl:PaymentCtrl x:Name="payment_ctrl" Visibility="Collapsed"></localControl:PaymentCtrl>
             <localControl:StatisticCtrl x:Name="statistic_ctrl" Visibility="Collapsed"></localControl:StatisticCtrl>

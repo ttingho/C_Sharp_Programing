@@ -29,6 +29,7 @@ namespace SubwayKiosk.Control
         public delegate void StatisticComplateHandler(object sender, StatisticArgs args);
         public event StatisticComplateHandler OnStatisticComplate;
         private List<Category> categories = new List<Category>();
+        private string todayTotalPrice = null;
 
         public StatisticCtrl()
         {
@@ -55,8 +56,8 @@ namespace SubwayKiosk.Control
 
         public void calcTodayTotalPrice()
         {
-            string total = App.statistic.ToDayTotalPrice() + " 원";
-            tbTodayTotalPrice.Text = total;
+            todayTotalPrice = App.statistic.ToDayTotalPrice() + " 원";
+            tbTodayTotalPrice.Text = todayTotalPrice;
         }
 
         public void calcStatisticMenu()
@@ -99,6 +100,19 @@ namespace SubwayKiosk.Control
             lvStatisticCategory.ItemsSource = foods;
 
             lvStatisticCategory.Items.Refresh();
+        }
+
+        private void handleDailyTurnover(object sender, RoutedEventArgs e)
+        {
+            if (App.loginType)
+            {
+                string sendTodayTotalMsg = "SUBWAY 하루 매출액 : " + todayTotalPrice;
+                App.node.setMessageAll(sendTodayTotalMsg);
+            }
+            else
+            {
+                MessageBox.Show("연결이 원활하지 않습니다. 다시 로그인하고 시도해주세요.");
+            }
         }
     }
 }

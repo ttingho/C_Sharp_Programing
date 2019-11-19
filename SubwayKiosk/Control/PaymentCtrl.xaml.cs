@@ -99,6 +99,13 @@ namespace SubwayKiosk.Control
             ctrlPaymentTable.Payment = payment;
             ctrlPaymentTable.isPayed = true;
 
+            if (App.loginType)
+            {
+                string tableTotalPriceMsg = "SUBWAY " + ctrlPaymentTable.Idx + "번 테이블 결제 금액 : " + ctrlPaymentTable.TotalPrice;
+
+                App.node.setMessage(tableTotalPriceMsg);
+            }
+
             App.statistic.SaledFood.Add(ctrlPaymentTable.Clone());
 
             args.PaymentTable = new SubkiTable() { Idx = ctrlPaymentTable.Idx, TotalPrice = 0, Payment = ePayment.empty, FoodList = new ObservableCollection<Food>() };

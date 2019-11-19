@@ -35,6 +35,15 @@ namespace SubwayKiosk
             order_ctrl.OnOrderComplate += OrderCtrl_OnOrderComplate;
             payment_ctrl.OnPaymentComplate += PaymentCtrl_OnPaymentComplate;
             statistic_ctrl.OnStatisticComplate += StatisticCtrl_OnStatisticComplate;
+            login_ctrl.OnLoginComplate += LoginCtrl_OnLoginComplate;
+        }
+
+        private void LoginCtrl_OnLoginComplate(object sender, LoginArgs args)
+        {
+            mainSubki_contents.Visibility = Visibility.Visible;
+            login_ctrl.Visibility = Visibility.Collapsed;
+
+            App.loginType = args.isLoginType;
         }
 
         private void StatisticCtrl_OnStatisticComplate(object sender, StatisticArgs args)
@@ -207,6 +216,24 @@ namespace SubwayKiosk
             statistic_ctrl.calcStatisticMenu();
             mainSubki_contents.Visibility = Visibility.Collapsed;
             statistic_ctrl.Visibility = Visibility.Visible;
+        }
+
+        private void handleLogout(object sender, RoutedEventArgs e)
+        {
+            App.loginType = false;
+
+            if(App.node.isConnected)
+            {
+                App.node.disconnected();
+            }
+
+            if(!App.node.isConnected)
+            {
+                MessageBox.Show("로그아웃!");
+            }
+
+            mainSubki_contents.Visibility = Visibility.Collapsed;
+            login_ctrl.Visibility = Visibility.Visible;
         }
     }
 }

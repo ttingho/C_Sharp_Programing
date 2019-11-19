@@ -10,8 +10,8 @@ namespace SubwayKiosk.Model
 {
     public class Node
     {
-        private static String ip = "10.80.163.138";
-        private static int port = 80;
+        public String ip = "10.80.163.138";
+        public int port = 80;
 
         private Thread client = null;
 
@@ -24,12 +24,13 @@ namespace SubwayKiosk.Model
 
         public bool isConnected = false;
 
-        private String id = "@2209";
+        public String id = "@2209";
 
         private String startTime = null;
         private String endTime = null;
 
         public String strError = null;
+        private bool logout = false;
 
         public void run()
         {
@@ -41,6 +42,7 @@ namespace SubwayKiosk.Model
 
                 while(true)
                 {
+                    if (this.logout){ return; }
                     if(this.msg != null)
                     {
                         Send();
@@ -116,7 +118,7 @@ namespace SubwayKiosk.Model
 
         private void SendAll()
         {
-            socket.Send(ToBytes("@All" + "#" + this.msg));
+            socket.Send(ToBytes("@All" + "#" + this.allmsg));
             this.allmsg = null;
         }
 
@@ -147,5 +149,9 @@ namespace SubwayKiosk.Model
             this.id = "@" + id.ToString();
         }
         
+        public void disconnected()
+        {
+            this.logout = true;
+        }
     }
 }
