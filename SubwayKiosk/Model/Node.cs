@@ -8,14 +8,14 @@ using System.Threading;
 
 namespace SubwayKiosk.Model
 {
+    public delegate void HandleDisconnect();
+
     public class Node
     {
         public String ip = "10.80.163.138";
         public int port = 80;
 
-        private Thread client = null;
-
-        private Socket socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+        private Socket socket = null;
 
         private String msg = null;
         private String allmsg = null;
@@ -32,8 +32,12 @@ namespace SubwayKiosk.Model
         public String strError = null;
         private bool logout = false;
 
+        public event HandleDisconnect dc;
+
         public void run()
         {
+            this.logout = false;
+
             try
             {
                 login();
@@ -42,12 +46,7 @@ namespace SubwayKiosk.Model
 
                 while(true)
                 {
-                    if (this.logout){
-                        this.logout = false;
-                        socket.Shutdown(SocketShutdown.Both);
-                        socket.Close();
-                        return;
-                    }
+                    if (this.logout){ break; }
                     if(this.msg != null)
                     {
                         Send();
@@ -58,37 +57,38 @@ namespace SubwayKiosk.Model
                         SendAll();
                         Success();
                     }
+                    SendNull();
+                    Success();
                 }
             }
             catch(Exception e)
             {
-                EndTimer();
-                this.socket.Close();
-                isConnected = false;
                 this.strError = string.Format("[SYSTEM] : {0}", e.Message);
-                this.Connect();
+                dc();
             }
+
+            EndTimer();
+            this.isConnected = false;
+            socket.Shutdown(SocketShutdown.Both);
+            socket.Close();
+            Console.WriteLine("쓰레드 종료");
         }
 
         public void Connect()
         {
-            try
-            {
-                this.socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-                this.socket.Connect(ip, port);
-            }
-            catch (Exception e)
-            {
-                this.strError = string.Format("[SYSTEM] : {0}", e.Message);
-                return;
-            }
+            this.socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+            IAsyncResult result = this.socket.BeginConnect(ip, port, null, null);
+
+            bool success = result.AsyncWaitHandle.WaitOne(5000, true);
+
+            if (!success) { return; }
 
             this.isConnected = true;
 
-            client = new Thread(new ThreadStart(run));
-            client.IsBackground = true;
+            Thread client = new Thread(new ThreadStart(run));
             client.Start();
         }
+
 
         private void login()
         {
@@ -126,6 +126,11 @@ namespace SubwayKiosk.Model
         {
             socket.Send(ToBytes("@All" + "#" + this.allmsg));
             this.allmsg = null;
+        }
+
+        private void SendNull()
+        {
+            socket.Send(ToBytes("hello"));
         }
 
         private void StartTimer()

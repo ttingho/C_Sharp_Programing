@@ -21,5 +21,16 @@ namespace SubwayKiosk
         public static Statistic statistic = new Statistic();
         public static Node node = new Node();
         public static bool loginType = false;
+
+        public App()
+        {
+            App.node.dc += new HandleDisconnect(handleDisconnectedMessage);
+            App.node.dc += new HandleDisconnect(App.node.Connect);
+        }
+
+        private void handleDisconnectedMessage()
+        {
+            MessageBox.Show("서버와의 연결이 끊어졌습니다.");
+        }
     }
 }
