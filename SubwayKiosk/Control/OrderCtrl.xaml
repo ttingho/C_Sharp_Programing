@@ -120,7 +120,7 @@
                             <TextBlock 
                                 x:Name="tableTB"
                                 FontFamily="TMONMONSORI"
-                                FontSize="30"
+                                FontSize="35"
                                 FontWeight="Bold"
                                 Margin="30 0 0 0" />
                         </StackPanel>
